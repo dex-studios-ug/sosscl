@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soroti Orthopaedics | SOSSCL</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- calm hospital palette: white, soft blues, teal accents, clean grey -->
+  <style>
+    :root {
+      --hospital-bg: #f8fafc;
+      --primary-teal: #2a9d8f;
+      --soft-blue: #e6f2ff;
+      --calm-sky: #d9e9fa;
+      --accent-green: #2e7d73;
+      --neutral-white: #ffffff;
+      --text-dark: #1e2b37;
+      --text-soft: #3a4e5e;
+      --shadow-sm: 0 8px 20px rgba(0,40,30,0.05);
+    }
+    body {
+      background-color: var(--hospital-bg);
+      color: var(--text-dark);
+      font-family: 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+      scroll-behavior: smooth;
+    }
+    .navbar, .footer {
+      background-color: var(--neutral-white);
+      box-shadow: 0 4px 12px rgba(0,50,40,0.03);
+    }
+    .navbar-brand {
+      font-weight: 600;
+      color: var(--primary-teal) !important;
+      letter-spacing: -0.3px;
+    }
+    .nav-link {
+      color: var(--text-soft) !important;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .nav-link:hover {
+      color: var(--primary-teal) !important;
+    }
+    .btn-hospital {
+      background-color: var(--primary-teal);
+      color: white;
+      border-radius: 30px;
+      padding: 0.5rem 1.8rem;
+      font-weight: 500;
+      border: none;
+      transition: all 0.2s;
+      box-shadow: 0 4px 8px rgba(42,157,143,0.2);
+    }
+    .btn-hospital:hover {
+      background-color: var(--accent-green);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 14px rgba(42,157,143,0.25);
+      color: white;
+    }
+    .btn-outline-hospital {
+      background-color: transparent;
+      border: 2px solid var(--primary-teal);
+      color: var(--primary-teal);
+      border-radius: 30px;
+      padding: 0.4rem 1.6rem;
+      font-weight: 500;
+    }
+    .btn-outline-hospital:hover {
+      background-color: var(--primary-teal);
+      color: white;
+    }
+    .hero {
+      background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+      padding: 4rem 0 3rem;
+    }
+    .badge-hospital {
+      background-color: var(--soft-blue);
+      color: var(--accent-green);
+      font-weight: 500;
+      padding: 0.4rem 1rem;
+      border-radius: 30px;
+    }
+    .service-card, .testimonial-card, .management-card, .feature-card {
+      background: var(--neutral-white);
+      border: none;
+      border-radius: 24px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+      height: 100%;
+      padding: 1.8rem 1.5rem;
+    }
+    .service-card:hover, .testimonial-card:hover, .management-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 20px 30px -8px rgba(0,80,70,0.12);
+    }
+    .icon-circle {
+      background-color: var(--soft-blue);
+      width: 64px;
+      height: 64px;
+      border-radius: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    .icon-circle i {
+      font-size: 2rem;
+      color: var(--primary-teal);
+    }
+    .section-title {
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      color: var(--text-soft);
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .stat-number {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--primary-teal);
+    }
+    .bg-soft-blue {
+      background-color: var(--calm-sky);
+    }
+    footer a {
+      color: var(--text-soft);
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+    footer a:hover {
+      color: var(--primary-teal);
+      text-decoration: underline;
+    }
+    .dynamic-counter {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent-green);
+    }
+    /* jQuery slide toggle */
+    .toggle-details {
+      cursor: pointer;
+      color: var(--primary-teal);
+      font-weight: 500;
+    }
+    .extra-content {
+      display: none;
+      background: #f9fdfe;
+      padding: 1.2rem;
+      border-radius: 16px;
+      margin-top: 1rem;
+      border-left: 4px solid var(--primary-teal);
+    }
+  </style>
+  <!-- Bootstrap Icons (optional but nice) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+  <!-- skip link (invisible but accessible) -->
+  <a href="#mainContent" class="visually-hidden-focusable">Skip to content</a>
+
+  <!-- sticky navbar -->
+  <nav class="navbar navbar-expand-lg sticky-top bg-white">
+    <div class="container">
+  <a class="navbar-brand" href="index.html">
+        <i class="bi bi-hospital me-2" style="color: var(--primary-teal);"></i>Soroti Orthopaedics
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="sosscl.html">SOSSCL</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="doctors.html">Doctors</a></li>
+          <li class="nav-item"><a class="nav-link" href="premise.html">Premise</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <a href="appointment.html" class="btn btn-hospital btn-sm">Book Appointment</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main id="mainContent">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <span class="badge-hospital mb-3 d-inline-block"><i class="bi bi-heart-pulse me-2"></i>Compassionate care 24/7</span>
+            <h1 class="display-4 fw-bold mb-3">Expert Orthopaedic & Surgical Care in Soroti</h1>
+            <p class="lead text-secondary mb-4">Providing comprehensive healthcare services with love and compassion. Our dedicated team offers orthopaedic surgery, general surgery, pharmacy, rehabilitation, lab services, and consultations.</p>
+            <div class="d-flex flex-wrap gap-3">
+              <a href="appointment.html" class="btn btn-hospital btn-lg px-4">Book Appointment</a>
+              <a href="services.html" class="btn btn-outline-hospital btn-lg px-4">Our Services</a>
+            </div>
+            <div class="row mt-5 g-4">
+              <div class="col-4">
+                <div class="stat-number"><span class="counter" data-target="25">0</span>+</div>
+                <span>Specialists</span>
+              </div>
+              <div class="col-4">
+                <div class="stat-number"><span class="counter" data-target="5000">0</span>+</div>
+                <span>Happy patients</span>
+              </div>
+              <div class="col-4">
+                <div class="stat-number">24/7</div>
+                <span>Emergency</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <img src="/img/img-50.png" alt="Medical team" class="img-fluid rounded-5 shadow">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About SOSSCL short / dynamic jquery toggle -->
+    <section class="py-5" id="about">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h2 class="section-title">Soroti Orthopaedic And Surgical Specialists Center Limited (SOSSCL)</h2>
+            <p class="section-sub">A patient-centered healthcare organization committed to delivering accessible, high-quality, and compassionate medical services. We combine modern medical practices with a strong focus on ethics, professionalism, and community well-being.</p>
+            <div class="mt-4 toggle-details" id="readMoreAbout"><i class="bi bi-plus-circle me-2"></i>Read more about our philosophy</div>
+            <div class="extra-content text-start mt-3" id="aboutExtra">
+              <p>Our values: Integrity, compassion, excellence, and community. Since our founding, we have served thousands of patients from Soroti and beyond, ensuring that every person receives respectful, top-tier care regardless of background. We continuously invest in training and modern equipment.</p>
+              <p>Our vision: To be the leading orthopaedic and surgical centre in eastern Uganda, trusted for clinical excellence and patient warmth.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services cards with dynamic hover and icon -->
+    <section class="py-5 bg-soft-blue" id="services">
+      <div class="container">
+        <h2 class="section-title text-center">Our Services</h2>
+        <p class="section-sub text-center mb-5">Comprehensive medical services under one roof, delivered with professionalism and empathy.</p>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="service-card">
+              <div class="icon-circle"><i class="bi bi-clipboard2-pulse"></i></div>
+              <h4>Consultation & General Medicine</h4>
+              <p>Comprehensive medical consultations for all ages, focusing on diagnosis, treatment, and prevention. Personalized care and ongoing support.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="service-card">
+              <div class="icon-circle"><i class="bi bi-bandaid"></i></div>
+              <h4>Orthopaedic & General Surgery</h4>
+              <p>Expert care for bone, joint, and musculoskeletal conditions. From evaluation to recovery, we ensure safe, effective treatment.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="service-card">
+              <div class="icon-circle"><i class="bi bi-capsule"></i></div>
+              <h4>Laboratory & Pharmacy</h4>
+              <p>Reliable pharmacy and lab services for accurate diagnosis. Timely results and quality medications with proper guidance.</p>
+            </div>
+          </div>
+        </div>
+        <!-- jQuery toggle for extra services (interactive) -->
+        <div class="text-center mt-4">
+          <span class="toggle-details" id="moreServicesToggle"><i class="bi bi-arrow-down-circle"></i> view additional services (rehabilitation & emergency)</span>
+        </div>
+        <div class="extra-content row g-4 mt-2" id="moreServicesList">
+          <div class="col-md-6">
+            <div class="d-flex align-items-start gap-3">
+              <i class="bi bi-truck fs-1" style="color: var(--primary-teal);"></i>
+              <div><h5>24/7 Emergency & ambulance</h5><p>Always ready for urgent care, with rapid response and well-equipped ambulances.</p></div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="d-flex align-items-start gap-3">
+              <i class="bi bi-activity fs-1" style="color: var(--primary-teal);"></i>
+              <div><h5>Rehabilitation & physiotherapy</h5><p>Dedicated rehab to restore mobility and strength after surgery or injury.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Doctors / management carousel (interactive jQuery) -->
+    <section class="py-5" id="doctors">
+      <div class="container">
+        <h2 class="section-title text-center">Experienced team, caring staff</h2>
+        <div class="row justify-content-center my-4">
+          <div class="col-lg-8 text-center">
+            <p>Our hospital is staffed by qualified doctors, nurses, and healthcare professionals dedicated to your recovery and comfort.</p>
+          </div>
+        </div>
+        <div class="row g-4" id="doctorCards">
+          <!-- management cards with data角色 -->
+          <div class="col-md-4">
+            <div class="management-card text-center p-4">
+              <img src="https://placehold.co/150x150/2a9d8f/white?text=Dr." class="rounded-circle mb-3" width="120" alt="doctor">
+              <h4>Dr. John Doe</h4>
+              <p class="text-secondary">Medical Director</p>
+              <p class="small">“Our priority: safe, high-quality, compassionate healthcare to every patient.”</p>
+              <span class="badge bg-soft-blue text-dark">orthopaedic surgeon</span>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="management-card text-center p-4">
+              <img src="https://placehold.co/150x150/2a9d8f/white?text=Admin" class="rounded-circle mb-3" width="120" alt="admin">
+              <h4>Jane Doe</h4>
+              <p class="text-secondary">Hospital Administrator</p>
+              <p class="small">“Welcoming environment, accessible services, modern facilities.”</p>
+              <span class="badge bg-soft-blue text-dark">admin</span>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="management-card text-center p-4">
+              <img src="https://placehold.co/150x150/2a9d8f/white?text=Nurse" class="rounded-circle mb-3" width="120" alt="nurse">
+              <h4>Justin Doe</h4>
+              <p class="text-secondary">Head of Nursing Services</p>
+              <p class="small">“Nursing with compassion, professionalism, empathy – always by your side.”</p>
+              <span class="badge bg-soft-blue text-dark">nursing</span>
+            </div>
+          </div>
+        </div>
+        <!-- dynamic jQuery load more message -->
+        <div class="text-center mt-3">
+          <a href="#" id="showAllDoctors" class="toggle-details"><i class="bi bi-people"></i> meet our full team of 15+ specialists</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why choose & testimonials mixed -->
+    <section class="py-5 bg-soft-blue" id="premise">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 mb-4">
+            <h2 class="section-title">Why Choose SOSSCL</h2>
+            <div class="feature-card p-4">
+              <p class="fw-bold"><i class="bi bi-shield-check me-2" style="color: var(--primary-teal);"></i>Compassionate, Quality Healthcare You Can Trust</p>
+              <p>Your health and well-being come first. Safe, reliable, patient-centered medical care for individuals and families.</p>
+              <hr>
+              <p><i class="bi bi-heart me-2" style="color: var(--primary-teal);"></i><strong>Patient-centered care:</strong> safe, clean, welcoming environment, from booking to follow-up.</p>
+              <p><i class="bi bi-truck-front me-2" style="color: var(--primary-teal);"></i><strong>Emergency Care – 24/7:</strong> open 24/7, rapid response for urgent illnesses and emergencies.</p>
+              <p><i class="bi bi-microwave me-2" style="color: var(--primary-teal);"></i><strong>Modern Diagnostics:</strong> reliable lab services using modern equipment for timely results.</p>
+              <div class="toggle-details" id="whyMoreToggle">read what patients say <i class="bi bi-chat-quote"></i></div>
+            </div>
+          </div>
+          <div class="col-lg-6 mb-4">
+            <!-- testimonial cards dynamic extra -->
+            <div class="testimonial-card" id="testimonialBlock">
+              <i class="bi bi-quote display-1" style="color: var(--soft-blue);"></i>
+              <p class="fs-5 fst-italic">"Professional staff, clean facility, and excellent care. SOSSCL made me feel comfortable and well taken care of."</p>
+              <p>— Mr Ademingu Totorit, Soro</p>
+              <hr>
+              <p class="fs-5 fst-italic">"The nursing team went above and beyond for my mother. Truly compassionate."</p>
+              <p>— Akello Grace, Soroti</p>
+              <div class="extra-content mt-3" id="moreTestimonials">
+                <p class="fst-italic">"Best orthopaedic care in the region. Quick diagnosis and effective surgery." – Ocen Peter</p>
+              </div>
+              <span class="toggle-details" id="loadMoreTestimonials">+ more testimonials</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Word from management + signup / daily stories -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-7">
+            <h2 class="section-title">Word From Management</h2>
+            <div class="d-flex gap-3 mb-4 flex-wrap">
+              <span class="badge-hospital">Medical director</span><span class="badge-hospital">Admin</span><span class="badge-hospital">Nursing</span>
+            </div>
+            <p><strong>John Doe – Medical Director:</strong> "Our priority is to provide safe, high-quality, and compassionate healthcare to every patient. Committed to medical excellence, ethical practice, and continuous improvement."</p>
+            <p><strong>Jane Doe – Hospital Administrator:</strong> "We strive to create a welcoming and efficient healthcare environment where patients feel supported and respected. Modern facilities, smooth patient experiences."</p>
+            <p><strong>Justin Doe – Head of Nursing Services:</strong> "Our nursing team delivers care with compassion, professionalism, and empathy. We work closely with patients and families."</p>
+          </div>
+          <div class="col-md-5">
+            <div class="bg-white p-4 rounded-4 shadow-sm">
+              <h5><i class="bi bi-newspaper me-2"></i> Sign up to get daily stories</h5>
+              <p>Health tips and community stories from professionals.</p>
+              <div class="input-group mb-3">
+                <input type="email" class="form-control" placeholder="Your email" id="subEmail">
+                <button class="btn btn-hospital" type="button" id="subscribeBtn">Subscribe</button>
+              </div>
+              <small class="text-secondary">Get access to curated health tips and a diverse community.</small>
+              <div id="subscribeMsg" class="mt-2 small text-success" style="display: none;">✓ Thanks, you're subscribed (demo).</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer with details -->
+  <footer class="footer pt-5 pb-4">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <h4 class="fw-semibold" style="color: var(--primary-teal);">Soroti Orthopaedics</h4>
+          <p class="text-secondary">Dedicated To Serve You With Compassion And Love</p>
+          <p>Plot 23, Orwadai, Soroti East (Opposite Impact Institute)<br>
+          Phone: 0764 364 734  | 0374 364 363<br>
+          <span class="badge-hospital mt-2">Open 24/7</span></p>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h6>Who We Are</h6>
+          <ul class="list-unstyled">
+            <li><a href="about.html" class="text-decoration-none">About the Hospital</a></li>
+            <li><a href="doctors.html" class="text-decoration-none">Our Doctors & Staff</a></li>
+            <li><a href="about.html#mission" class="text-decoration-none">Mission & Values</a></li>
+            <li><a href="about.html#quality" class="text-decoration-none">Quality & Safety</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h6>What We Do</h6>
+          <ul class="list-unstyled">
+            <li><a href="services.html" class="text-decoration-none">Medical Services</a></li>
+            <li><a href="services.html#emergency" class="text-decoration-none">Emergency Care</a></li>
+            <li><a href="services.html#diagnostics" class="text-decoration-none">Diagnostic & Lab</a></li>
+            <li><a href="services.html#preventive" class="text-decoration-none">Preventive Care</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h6>Need Help?</h6>
+          <ul class="list-unstyled">
+            <li><a href="doctors.html" class="text-decoration-none">Find a Doctor</a></li>
+            <li><a href="appointment.html" class="text-decoration-none">Appointments</a></li>
+            <li><a href="#" class="text-decoration-none">Patient Resources</a></li>
+            <li><a href="#" class="text-decoration-none">Billing & Insurance</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2">
+          <h6>Location</h6>
+          <p><i class="bi bi-geo-alt-fill" style="color: var(--primary-teal);"></i> Soroti East<br> <span class="toggle-details" id="showMapLink">(click to view map demo)</span></p>
+          <div class="extra-content small p-2 bg-light" id="mapDemo">📍 Orwadai, opposite Impact Institute – ambulance access 24/7.</div>
+        </div>
+      </div>
+      <hr class="my-4">
+      <div class="row text-secondary">
+        <div class="col-md-6 small">© 2026 Soroti Orthopaedic and Surgical Specialists’ Center. All rights reserved.</div>
+        <div class="col-md-6 text-md-end small">Twenty Twenty-Five · Designed with <i class="bi bi-wordpress"></i> & <i class="bi bi-bootstrap"></i></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- jQuery, Bootstrap JS, and custom script -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      // jQuery interactive: toggle extra sections, counters, dynamic content
+
+      // 1. dynamic read more toggles (using slideToggle)
+      $('#readMoreAbout').on('click', function(){
+        $('#aboutExtra').slideToggle(300);
+        $(this).find('i').toggleClass('bi-plus-circle bi-dash-circle');
+      });
+
+      $('#moreServicesToggle').on('click', function(){
+        $('#moreServicesList').slideToggle(300);
+        $(this).find('i').toggleClass('bi-arrow-down-circle bi-arrow-up-circle');
+      });
+
+      $('#whyMoreToggle').on('click', function(){
+        $('#moreTestimonials').slideToggle(300);
+      });
+
+      $('#loadMoreTestimonials').on('click', function(){
+        $('#moreTestimonials').slideToggle(300);
+      });
+
+      $('#showAllDoctors').on('click', function(e){
+        e.preventDefault();
+        // simulate adding more doctors or showing message
+        if ($('#extraDoctorMsg').length === 0) {
+          $('#doctorCards').append('<div class="col-12 mt-2" id="extraDoctorMsg"><div class="alert alert-info bg-soft-blue">Full team: orthopaedic surgeons, nurses, anaesthetists, and general surgeons — all dedicated to you.</div></div>');
+        } else {
+          $('#extraDoctorMsg').toggle();
+        }
+      });
+
+      $('#showMapLink').on('click', function(){
+        $('#mapDemo').slideToggle(200);
+      });
+
+      // 2. subscription simulation (dynamic feedback)
+      $('#subscribeBtn').on('click', function(){
+        let email = $('#subEmail').val();
+        if(email && email.includes('@')){
+          $('#subscribeMsg').fadeIn().delay(2000).fadeOut();
+          $('#subEmail').val('');
+        } else {
+          alert('Please enter a valid email (demo).');
+        }
+      });
+
+      // 3. simple animated counters (jQuery)
+      function runCounters() {
+        $('.counter').each(function () {
+          var $this = $(this);
+          var target = $this.attr('data-target');
+          if (!target) return;
+          var countTo = parseInt(target);
+          $this.prop('Counter', 0).animate({
+            Counter: countTo
+          }, {
+            duration: 1500,
+            easing: 'swing',
+            step: function (now) {
+              $this.text(Math.ceil(now));
+            }
+          });
+        });
+      }
+      // trigger counters when in view (simple)
+      $(window).on('scroll', function checkCounters() {
+        $('.counter').each(function(){
+          if ($(this).isInViewport() && !$(this).hasClass('counted')) {
+            $(this).addClass('counted');
+            runCounters(); // lazy but simple: run all once
+          }
+        });
+      });
+      $.fn.isInViewport = function() {
+        let elementTop = $(this).offset().top;
+        let elementBottom = elementTop + $(this).outerHeight();
+        let viewportTop = $(window).scrollTop();
+        let viewportBottom = viewportTop + $(window).height();
+        return elementBottom > viewportTop && elementTop < viewportBottom;
+      };
+      // initial check if counters visible on load
+      setTimeout(() => { $(window).trigger('scroll'); }, 300);
+    });
+  </script>
+  <!-- additional small style for toggles -->
+  <style>
+    .toggle-details { cursor: pointer; transition: 0.2s; display: inline-block; }
+    .toggle-details:hover { color: #0f6b5f !important; text-decoration: underline; }
+    .extra-content { display: none; }
+    .counter { font-weight: 700; }
+  </style>
+</body>
+</html>

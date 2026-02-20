@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Hospital Premise & Gallery</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Visual demonstration of the hospital premise — departments, amenities and patient areas in an interactive gallery.">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+
+  <style>
+    :root {
+      --hospital-bg: #f8fafc;
+      --primary-teal: #2a9d8f;
+      --soft-blue: #e6f2ff;
+      --calm-sky: #d9e9fa;
+      --accent-green: #2e7d73;
+      --neutral-white: #ffffff;
+      --text-dark: #1e2b37;
+      --text-soft: #3a4e5e;
+      --shadow-sm: 0 8px 20px rgba(0,40,30,0.05);
+    }
+    body {
+      background-color: var(--hospital-bg);
+      color: var(--text-dark);
+      font-family: 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+      scroll-behavior: smooth;
+    }
+    .navbar, .footer {
+      background-color: var(--neutral-white);
+      box-shadow: 0 4px 12px rgba(0,50,40,0.03);
+    }
+    .navbar-brand {
+      font-weight: 600;
+      color: var(--primary-teal) !important;
+      letter-spacing: -0.3px;
+    }
+    .nav-link {
+      color: var(--text-soft) !important;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .nav-link:hover {
+      color: var(--primary-teal) !important;
+    }
+    .btn-hospital {
+      background-color: var(--primary-teal);
+      color: white;
+      border-radius: 30px;
+      padding: 0.5rem 1.8rem;
+      font-weight: 500;
+      border: none;
+      transition: all 0.2s;
+      box-shadow: 0 4px 8px rgba(42,157,143,0.2);
+    }
+    .btn-hospital:hover {
+      background-color: var(--accent-green);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 14px rgba(42,157,143,0.25);
+      color: white;
+    }
+    .btn-outline-hospital {
+      background-color: transparent;
+      border: 2px solid var(--primary-teal);
+      color: var(--primary-teal);
+      border-radius: 30px;
+      padding: 0.4rem 1.6rem;
+      font-weight: 500;
+    }
+    .btn-outline-hospital:hover {
+      background-color: var(--primary-teal);
+      color: white;
+    }
+    .hero {
+      background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+      padding: 4rem 0 3rem;
+    }
+    .badge-hospital {
+      background-color: var(--soft-blue);
+      color: var(--accent-green);
+      font-weight: 500;
+      padding: 0.4rem 1rem;
+      border-radius: 30px;
+    }
+    .service-card, .testimonial-card, .management-card, .feature-card {
+      background: var(--neutral-white);
+      border: none;
+      border-radius: 24px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+      height: 100%;
+      padding: 1.8rem 1.5rem;
+    }
+    .service-card:hover, .testimonial-card:hover, .management-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 20px 30px -8px rgba(0,80,70,0.12);
+    }
+    .icon-circle {
+      background-color: var(--soft-blue);
+      width: 64px;
+      height: 64px;
+      border-radius: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    .icon-circle i {
+      font-size: 2rem;
+      color: var(--primary-teal);
+    }
+    .section-title {
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      color: var(--text-soft);
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .stat-number {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--primary-teal);
+    }
+    .bg-soft-blue {
+      background-color: var(--calm-sky);
+    }
+    footer a {
+      color: var(--text-soft);
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+    footer a:hover {
+      color: var(--primary-teal);
+      text-decoration: underline;
+    }
+    .dynamic-counter {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent-green);
+    }
+    /* jQuery slide toggle */
+    .toggle-details {
+      cursor: pointer;
+      color: var(--primary-teal);
+      font-weight: 500;
+    }
+    .extra-content {
+      display: none;
+      background: #f9fdfe;
+      padding: 1.2rem;
+      border-radius: 16px;
+      margin-top: 1rem;
+      border-left: 4px solid var(--primary-teal);
+    }
+    :root{--accent:#0a7bff;--bg:#f7f9fc;--text:#222}
+    body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial}
+    header{background:#fff;border-bottom:1px solid #e6eef9}
+    .carousel-item img{height:60vh;min-height:320px;object-fit:cover;width:100%}
+    @media (max-width:700px){.carousel-item img{height:46vh}}
+    .carousel-caption{background:linear-gradient(90deg, rgba(0,0,0,.45), rgba(0,0,0,.15));backdrop-filter:blur(6px);border-radius:.5rem;left:1rem;right:auto;max-width:65%}
+    @media (max-width:700px){.carousel-caption{max-width:90%;left:.75rem;right:.75rem}}
+  </style>
+</head>
+<body>
+  <header class="py-3">
+    <!-- sticky navbar -->
+  <nav class="navbar navbar-expand-lg sticky-top bg-white">
+    <div class="container">
+  <a class="navbar-brand" href="index.html">
+        <i class="bi bi-hospital me-2" style="color: var(--primary-teal);"></i>Soroti Orthopaedics
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="sosscl.html">SOSSCL</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="doctors.html">Doctors</a></li>
+          <li class="nav-item"><a class="nav-link active fw-semibold" aria-current="page" href="premise.html">Premise</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <a href="appointment.html" class="btn btn-hospital btn-sm">Book Appointment</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  </header>
+
+  <main class="container my-4">
+    <section aria-roledescription="carousel" aria-label="Hospital departments and amenities">
+
+      <div id="hospitalCarousel" class="carousel slide shadow rounded" data-bs-ride="carousel" data-bs-interval="6000" data-bs-pause="hover">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#hospitalCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Emergency Department"></button>
+          <button type="button" data-bs-target="#hospitalCarousel" data-bs-slide-to="1" aria-label="ICU"></button>
+          <button type="button" data-bs-target="#hospitalCarousel" data-bs-slide-to="2" aria-label="Pediatrics"></button>
+          <button type="button" data-bs-target="#hospitalCarousel" data-bs-slide-to="3" aria-label="Radiology"></button>
+          <button type="button" data-bs-target="#hospitalCarousel" data-bs-slide-to="4" aria-label="Operating Theaters"></button>
+          <button type="button" data-bs-target="#hospitalCarousel" data-bs-slide-to="5" aria-label="Maternity"></button>
+          <button type="button" data-bs-target="#hospitalCarousel" data-bs-slide-to="6" aria-label="Pharmacy and Labs"></button>
+          <button type="button" data-bs-target="#hospitalCarousel" data-bs-slide-to="7" aria-label="Cafeteria"></button>
+          <button type="button" data-bs-target="#hospitalCarousel" data-bs-slide-to="8" aria-label="Rehabilitation"></button>
+        </div>
+
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-title="Emergency Department">
+            <img src="/img/img-10.jpg" class="d-block w-100" alt="Emergency department with staff and patients">
+            <div class="carousel-caption text-start d-none d-md-block">
+              <h5>Emergency Department</h5>
+              <p>24/7 rapid response, triage and life-saving care in dedicated resuscitation areas.</p>
+            </div>
+          </div>
+
+          <div class="carousel-item" data-title="Intensive Care Unit">
+            <img src="/img/img-11.jpg" class="d-block w-100" alt="Intensive Care Unit with monitoring equipment">
+            <div class="carousel-caption text-start d-none d-md-block">
+              <h5>Intensive Care Unit (ICU)</h5>
+              <p>Specialized monitoring and multidisciplinary support for critically ill patients.</p>
+            </div>
+          </div>
+
+          <div class="carousel-item" data-title="Pediatrics">
+            <img src="/img/img-12.jpg" class="d-block w-100" alt="Pediatric ward with toys and bright decor">
+            <div class="carousel-caption text-start d-none d-md-block">
+              <h5>Pediatrics</h5>
+              <p>Child-friendly wards and family-centered care designed for young patients.</p>
+            </div>
+          </div>
+
+          <div class="carousel-item" data-title="Radiology & Imaging">
+            <img src="/img/img-13.jpg" class="d-block w-100" alt="Imaging equipment in radiology department">
+            <div class="carousel-caption text-start d-none d-md-block">
+              <h5>Radiology & Imaging</h5>
+              <p>High-resolution imaging for accurate diagnoses and treatment planning.</p>
+            </div>
+          </div>
+
+          <div class="carousel-item" data-title="Operating Theaters">
+            <img src="/img/img-14.jpg" class="d-block w-100" alt="Operating theater prepared for surgery">
+            <div class="carousel-caption text-start d-none d-md-block">
+              <h5>Operating Theaters</h5>
+              <p>Modern ORs with sterile environments and advanced surgical systems.</p>
+            </div>
+          </div>
+
+          <div class="carousel-item" data-title="Maternity & Neonatal">
+            <img src="/img/img-15.jpg" class="d-block w-100" alt="Maternity ward and newborn care">
+            <div class="carousel-caption text-start d-none d-md-block">
+              <h5>Maternity & Neonatal</h5>
+              <p>Supportive delivery suites and neonatal care for mothers and infants.</p>
+            </div>
+          </div>
+
+          <div class="carousel-item" data-title="Pharmacy & Labs">
+            <img src="/img/img-16.jpg" class="d-block w-100" alt="Pharmacy and clinical laboratory">
+            <div class="carousel-caption text-start d-none d-md-block">
+              <h5>Pharmacy & Labs</h5>
+              <p>On-site dispensing and diagnostic services for timely treatment decisions.</p>
+            </div>
+          </div>
+
+          <div class="carousel-item" data-title="Cafeteria & Amenities">
+            <img src="/img/img-17.jpg" class="d-block w-100" alt="Hospital cafeteria and visitor lounge">
+            <div class="carousel-caption text-start d-none d-md-block">
+              <h5>Cafeteria & Amenities</h5>
+              <p>Comfortable spaces for visitors and patients, including cafeterias and rest areas.</p>
+            </div>
+          </div>
+
+          <div class="carousel-item" data-title="Rehabilitation">
+            <img src="/img/img-18.jpg" class="d-block w-100" alt="Physical therapy and rehab gym">
+            <div class="carousel-caption text-start d-none d-md-block">
+              <h5>Rehabilitation</h5>
+              <p>Therapy spaces and programs to support patient recovery and mobility.</p>
+            </div>
+          </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#hospitalCarousel" data-bs-slide="prev" aria-label="Previous slide">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#hospitalCarousel" data-bs-slide="next" aria-label="Next slide">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+
+      </div>
+
+      <div class="row mt-4 g-3">
+        <div class="col-12 col-md-6">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Overview</h5>
+              <p class="card-text">This visual gallery provides a quick tour of the hospital's key departments and amenities. Use the controls, swipe (on touch devices), or keyboard arrows to navigate. The carousel advances automatically but will pause on hover or focus.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Accessibility</h5>
+              <p class="card-text">Captions, clear alt text, keyboard navigation, and focusable controls improve accessibility. Contact us for guided tours or more information about specific departments.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+     <!-- Footer with details -->
+  <footer class="footer pt-5 pb-4">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <h4 class="fw-semibold" style="color: var(--primary-teal);">Soroti Orthopaedics</h4>
+          <p class="text-secondary">Dedicated To Serve You With Compassion And Love</p>
+          <p>Plot 23, Orwadai, Soroti East (Opposite Impact Institute)<br>
+          Phone: 0764 364 734  | 0374 364 363<br>
+          <span class="badge-hospital mt-2">Open 24/7</span></p>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h6>Who We Are</h6>
+          <ul class="list-unstyled">
+            <li><a href="about.html" class="text-decoration-none">About the Hospital</a></li>
+            <li><a href="doctors.html" class="text-decoration-none">Our Doctors & Staff</a></li>
+            <li><a href="about.html#mission" class="text-decoration-none">Mission & Values</a></li>
+            <li><a href="about.html#quality" class="text-decoration-none">Quality & Safety</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h6>What We Do</h6>
+          <ul class="list-unstyled">
+            <li><a href="services.html" class="text-decoration-none">Medical Services</a></li>
+            <li><a href="services.html#emergency" class="text-decoration-none">Emergency Care</a></li>
+            <li><a href="services.html#diagnostics" class="text-decoration-none">Diagnostic & Lab</a></li>
+            <li><a href="services.html#preventive" class="text-decoration-none">Preventive Care</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h6>Need Help?</h6>
+          <ul class="list-unstyled">
+            <li><a href="doctors.html" class="text-decoration-none">Find a Doctor</a></li>
+            <li><a href="appointment.html" class="text-decoration-none">Appointments</a></li>
+            <li><a href="#" class="text-decoration-none">Patient Resources</a></li>
+            <li><a href="#" class="text-decoration-none">Billing & Insurance</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2">
+          <h6>Location</h6>
+          <p><i class="bi bi-geo-alt-fill" style="color: var(--primary-teal);"></i> Soroti East<br> <span class="toggle-details" id="showMapLink">(click to view map demo)</span></p>
+          <div class="extra-content small p-2 bg-light" id="mapDemo">📍 Orwadai, opposite Impact Institute – ambulance access 24/7.</div>
+        </div>
+      </div>
+      <hr class="my-4">
+      <div class="row text-secondary">
+        <div class="col-md-6 small">© 2026 Soroti Orthopaedic and Surgical Specialists’ Center. All rights reserved.</div>
+        <div class="col-md-6 text-md-end small">Twenty Twenty-Five · Designed with <i class="bi bi-wordpress"></i> & <i class="bi bi-bootstrap"></i></div>
+      </div>
+    </div>
+  </footer>
+
+  </main>
+
+  <!-- Bootstrap Bundle JS (includes Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"  crossorigin="anonymous"></script>
+
+  <script>
+    // Ensure keyboard navigation is available and captions are announced
+    (function(){
+      const carouselEl = document.getElementById('hospitalCarousel');
+      if (!carouselEl) return;
+      const bsCarousel = bootstrap.Carousel.getOrCreateInstance(carouselEl, {keyboard:true,wrap:true});
+
+      // Add live region for slide title updates (assistive-tech friendly)
+      const live = document.createElement('span');
+      live.setAttribute('aria-live','polite');
+      live.setAttribute('class','visually-hidden');
+      document.body.appendChild(live);
+
+      carouselEl.addEventListener('slid.bs.carousel', (ev) => {
+        const idx = ev.to;
+        const item = ev.relatedTarget || carouselEl.querySelectorAll('.carousel-item')[idx];
+        const title = item && item.dataset.title ? item.dataset.title : 'Slide ' + (idx+1);
+        live.textContent = title;
+      });
+    })();
+  </script>
+</body>
+</html>

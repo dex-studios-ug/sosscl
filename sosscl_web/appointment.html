@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Appointment | Soroti Orthopaedics SOSSCL</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons (optional but nice) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <style>
+    :root {
+      --hospital-bg: #f8fafc;
+      --primary-teal: #2a9d8f;
+      --soft-blue: #e6f2ff;
+      --calm-sky: #d9e9fa;
+      --accent-green: #2e7d73;
+      --neutral-white: #ffffff;
+      --text-dark: #1e2b37;
+      --text-soft: #3a4e5e;
+      --shadow-sm: 0 8px 20px rgba(0,40,30,0.05);
+    }
+    body {
+      background-color: var(--hospital-bg);
+      color: var(--text-dark);
+      font-family: 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+      scroll-behavior: smooth;
+    }
+    .navbar, .footer {
+      background-color: var(--neutral-white);
+      box-shadow: 0 4px 12px rgba(0,50,40,0.03);
+    }
+    .navbar-brand {
+      font-weight: 600;
+      color: var(--primary-teal) !important;
+      letter-spacing: -0.3px;
+    }
+    .nav-link {
+      color: var(--text-soft) !important;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: var(--primary-teal) !important;
+    }
+    .btn-hospital {
+      background-color: var(--primary-teal);
+      color: white;
+      border-radius: 30px;
+      padding: 0.5rem 1.8rem;
+      font-weight: 500;
+      border: none;
+      transition: all 0.2s;
+      box-shadow: 0 4px 8px rgba(42,157,143,0.2);
+    }
+    .btn-hospital:hover {
+      background-color: var(--accent-green);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 14px rgba(42,157,143,0.25);
+      color: white;
+    }
+    .btn-outline-hospital {
+      background-color: transparent;
+      border: 2px solid var(--primary-teal);
+      color: var(--primary-teal);
+      border-radius: 30px;
+      padding: 0.4rem 1.6rem;
+      font-weight: 500;
+    }
+    .btn-outline-hospital:hover {
+      background-color: var(--primary-teal);
+      color: white;
+    }
+    .badge-hospital {
+      background-color: var(--soft-blue);
+      color: var(--accent-green);
+      font-weight: 500;
+      padding: 0.4rem 1rem;
+      border-radius: 30px;
+    }
+    .appointment-form-card {
+      background: var(--neutral-white);
+      border: none;
+      border-radius: 28px;
+      box-shadow: var(--shadow-sm);
+      padding: 2.5rem 2rem;
+    }
+    .form-control, .form-select {
+      border-radius: 16px;
+      padding: 0.75rem 1.2rem;
+      border: 1.5px solid #e2edf2;
+      background-color: #f9fcff;
+      transition: 0.2s;
+    }
+    .form-control:focus, .form-select:focus {
+      border-color: var(--primary-teal);
+      box-shadow: 0 0 0 4px rgba(42,157,143,0.15);
+      background-color: white;
+    }
+    .form-label {
+      font-weight: 500;
+      color: var(--text-soft);
+      margin-bottom: 0.3rem;
+      margin-left: 0.3rem;
+    }
+    .section-title {
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      color: var(--text-soft);
+    }
+    .info-chip {
+      background-color: #f0f7fa;
+      border-radius: 50px;
+      padding: 0.5rem 1.2rem;
+      color: var(--text-dark);
+      font-size: 0.95rem;
+    }
+    .info-chip i {
+      color: var(--primary-teal);
+      margin-right: 6px;
+    }
+    .toggle-details {
+      cursor: pointer;
+      color: var(--primary-teal);
+      font-weight: 500;
+      transition: 0.2s;
+      display: inline-block;
+    }
+    .toggle-details:hover {
+      color: #0f6b5f;
+      text-decoration: underline;
+    }
+    .extra-content {
+      display: none;
+      background: #f9fdfe;
+      padding: 1.2rem;
+      border-radius: 16px;
+      margin-top: 1rem;
+      border-left: 4px solid var(--primary-teal);
+    }
+    footer a {
+      color: var(--text-soft);
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+    footer a:hover {
+      color: var(--primary-teal);
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <!-- skip link -->
+  <a href="#appointmentMain" class="visually-hidden-focusable">Skip to appointment form</a>
+
+  <!-- sticky navbar (identical to main page) -->
+  <nav class="navbar navbar-expand-lg sticky-top bg-white">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <i class="bi bi-hospital me-2" style="color: var(--primary-teal);"></i>Soroti Orthopaedics
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="sosscl.html">SOSSCL</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="doctors.html">Doctors</a></li>
+          <li class="nav-item"><a class="nav-link" href="premise.html">Premise</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <a href="appointment.html" class="btn btn-hospital btn-sm active">Book Appointment</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- main appointment section (the new page content) -->
+  <main id="appointmentMain" class="py-5">
+    <div class="container">
+      <!-- header & breadcrumb feeling -->
+      <div class="mb-4 d-flex flex-wrap align-items-center justify-content-between">
+        <div>
+          <span class="badge-hospital mb-2 d-inline-block"><i class="bi bi-calendar-check me-2"></i>online booking · 24/7</span>
+          <h1 class="display-5 fw-bold">Book an appointment</h1>
+          <p class="text-secondary col-lg-7">Schedule your visit with Soroti Orthopaedic & Surgical Specialists. We'll confirm your slot via phone or SMS.</p>
+        </div>
+        <div class="info-chip">
+          <i class="bi bi-telephone-fill"></i> emergency: 0764 364 734
+        </div>
+      </div>
+
+      <div class="row g-5">
+        <!-- left column: Appointment form -->
+        <div class="col-lg-8">
+          <div class="appointment-form-card">
+            <h4 class="mb-4"><i class="bi bi-pencil-square me-2" style="color: var(--primary-teal);"></i>Patient details & preferences</h4>
+            
+            <!-- APPOINTMENT FORM – NO JS required, but we keep jQuery for interactive extras -->
+            <form id="appointmentForm" action="#" method="post">
+              <div class="row g-4">
+                <div class="col-md-6">
+                  <label for="firstName" class="form-label">Full name *</label>
+                  <input type="text" class="form-control" id="firstName" placeholder="e.g., Akello Grace" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="phone" class="form-label">Phone number *</label>
+                  <input type="tel" class="form-control" id="phone" placeholder="07xx xxx xxx" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="emailAddress" class="form-label">Email (optional)</label>
+                  <input type="email" class="form-control" id="emailAddress" placeholder="grace@example.com">
+                </div>
+                <div class="col-md-6">
+                  <label for="dob" class="form-label">Date of birth</label>
+                  <input type="date" class="form-control" id="dob">
+                </div>
+                <div class="col-12">
+                  <label for="serviceType" class="form-label">Preferred service *</label>
+                  <select class="form-select" id="serviceType" required>
+                    <option selected disabled value="">-- select a department --</option>
+                    <option>Orthopaedic consultation</option>
+                    <option>General surgery</option>
+                    <option>Follow-up / review</option>
+                    <option>Physiotherapy / rehabilitation</option>
+                    <option>Laboratory & diagnostics</option>
+                    <option>Pharmacy (prescription refill)</option>
+                    <option>Emergency (urgent - call instead)</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="prefDate" class="form-label">Preferred date *</label>
+                  <input type="date" class="form-control" id="prefDate" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="prefTime" class="form-label">Preferred time (approx)</label>
+                  <select class="form-select" id="prefTime">
+                    <option>Morning (8am - 12pm)</option>
+                    <option>Afternoon (12pm - 4pm)</option>
+                    <option>Evening (4pm - 7pm)</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <label for="doctorPreference" class="form-label">Specific doctor (optional)</label>
+                  <input type="text" class="form-control" id="doctorPreference" placeholder="e.g., Dr. John Doe, or any available">
+                </div>
+                <div class="col-12">
+                  <label for="reason" class="form-label">Brief reason / symptoms (optional)</label>
+                  <textarea class="form-control" id="reason" rows="2" placeholder="e.g., knee pain after injury ..."></textarea>
+                </div>
+                <div class="col-12">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="confirmConsent" required>
+                    <label class="form-check-label text-secondary" for="confirmConsent">
+                      I confirm that the information given is accurate, and I agree to the clinic's privacy policy.
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- jQuery interactive: a small extra toggle for insurance / nhif details -->
+              <div class="mt-4 toggle-details" id="insuranceToggle"><i class="bi bi-plus-circle me-2"></i>+ add insurance / NHIF details</div>
+              <div class="extra-content mt-2" id="insuranceExtra">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label">Insurance provider</label>
+                    <input type="text" class="form-control" placeholder="e.g., NHIF, AAR">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Policy number</label>
+                    <input type="text" class="form-control" placeholder="optional">
+                  </div>
+                </div>
+              </div>
+
+              <hr class="my-4">
+              <div class="d-flex flex-wrap gap-3 align-items-center">
+                <button type="submit" class="btn btn-hospital btn-lg px-5" id="bookSubmit"><i class="bi bi-send-check me-2"></i>Request appointment</button>
+                <span class="text-secondary small">We'll reply via SMS within 2 hours (7am–8pm)</span>
+              </div>
+              <!-- message placeholder for demo feedback -->
+              <div id="appointmentDemoMsg" class="mt-3 small text-success fw-semibold" style="display: none;">✓ Demo: your request was received (simulated). We'll contact you soon.</div>
+            </form>
+          </div>
+        </div>
+
+        <!-- right column: info panels / jQuery toggles similar to original page style -->
+        <div class="col-lg-4">
+          <div class="appointment-form-card bg-white p-4 mb-4">
+            <h5><i class="bi bi-clock-history me-2" style="color: var(--primary-teal);"></i>Clinic hours</h5>
+            <ul class="list-unstyled">
+              <li><i class="bi bi-check-circle-fill me-2" style="color: var(--primary-teal); font-size:0.8rem;"></i> Monday – Friday: 8am – 8pm</li>
+              <li><i class="bi bi-check-circle-fill me-2" style="color: var(--primary-teal); font-size:0.8rem;"></i> Saturday: 9am – 4pm</li>
+              <li><i class="bi bi-check-circle-fill me-2" style="color: var(--primary-teal); font-size:0.8rem;"></i> Sunday / holidays: emergency only</li>
+            </ul>
+            <div class="bg-soft-blue p-3 rounded-4 mt-3 d-flex gap-3">
+              <i class="bi bi-truck-front fs-1" style="color: var(--primary-teal);"></i>
+              <div><strong>24/7 ambulance</strong><br>0764 364 734</div>
+            </div>
+          </div>
+
+          <div class="appointment-form-card bg-white p-4">
+            <h5><i class="bi bi-star me-2" style="color: var(--primary-teal);"></i>Why book online?</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2">✓ Reduce waiting time</li>
+              <li class="mb-2">✓ Choose your preferred doctor</li>
+              <li class="mb-2">✓ Get SMS confirmation</li>
+              <li class="mb-2">✓ Easy rescheduling</li>
+            </ul>
+            <!-- jquery toggle similar to original: more tips -->
+            <div class="toggle-details" id="walkinToggle"><i class="bi bi-plus-circle me-1"></i> walk‑ins also welcome</div>
+            <div class="extra-content small p-3" id="walkinExtra">
+              <i class="bi bi-door-open me-1"></i> You can walk in any time during working hours. However, booking helps us prepare for your visit.
+            </div>
+
+            <!-- a small dynamic staff pick (just for fun like original) -->
+            <hr>
+            <div class="d-flex align-items-center gap-2">
+              <img src="https://placehold.co/50x50/2a9d8f/white?text=RN" class="rounded-circle" width="40" alt="nurse">
+              <div><span class="fw-semibold">Nurse Justin</span> <span class="text-secondary small">"We'll confirm your booking shortly."</span></div>
+            </div>
+            <!-- doctor image toggle demo -->
+            <div class="mt-3 toggle-details" id="showOncallDoc"><i class="bi bi-chevron-down"></i> see on‑call doctor today</div>
+            <div class="extra-content p-3 d-flex align-items-center gap-3" id="oncallDocInfo">
+              <img src="https://placehold.co/60x60/2a9d8f/white?text=Dr.O" class="rounded-circle" width="50">
+              <div><strong>Dr. Opio Michael</strong> — orthopaedic surgeon on call.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- optional map / location row (jQuery toggle) -->
+      <div class="row mt-5">
+        <div class="col-12">
+          <div class="bg-white p-3 rounded-4 d-flex flex-wrap align-items-center justify-content-between">
+            <span><i class="bi bi-geo-alt-fill me-2" style="color: var(--primary-teal);"></i> Plot 23, Orwadai, Soroti East (Opposite Impact Institute)</span>
+            <span class="toggle-details" id="showFullMapLink">📌 view location details</span>
+          </div>
+          <div class="extra-content mt-2 p-3 bg-light rounded" id="fullMapDemo">
+            <iframe title="demo map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.29781217243!2d33.622!3d1.715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMcKwNDInNTQuMCJOIDMzwrAzNycyMS4wIkU!5e0!3m2!1sen!2sug!4v1620000000000" width="100%" height="200" style="border:0; border-radius:16px;" allowfullscreen="" loading="lazy"></iframe>
+            <p class="small mt-2">Ambulance entrance: open 24/7 · free parking</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer identical to original, but we keep it consistent -->
+  <footer class="footer pt-5 pb-4">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <h4 class="fw-semibold" style="color: var(--primary-teal);">Soroti Orthopaedics</h4>
+          <p class="text-secondary">Dedicated To Serve You With Compassion And Love</p>
+          <p>Plot 23, Orwadai, Soroti East (Opposite Impact Institute)<br>
+          Phone: 0764 364 734  | 0374 364 363<br>
+          <span class="badge-hospital mt-2">Open 24/7</span></p>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h6>Who We Are</h6>
+          <ul class="list-unstyled">
+            <li><a href="about.html" class="text-decoration-none">About the Hospital</a></li>
+            <li><a href="doctors.html" class="text-decoration-none">Our Doctors & Staff</a></li>
+            <li><a href="about.html#mission" class="text-decoration-none">Mission & Values</a></li>
+            <li><a href="about.html#quality" class="text-decoration-none">Quality & Safety</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h6>What We Do</h6>
+          <ul class="list-unstyled">
+            <li><a href="services.html" class="text-decoration-none">Medical Services</a></li>
+            <li><a href="services.html#emergency" class="text-decoration-none">Emergency Care</a></li>
+            <li><a href="services.html#diagnostics" class="text-decoration-none">Diagnostic & Lab</a></li>
+            <li><a href="services.html#preventive" class="text-decoration-none">Preventive Care</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h6>Need Help?</h6>
+          <ul class="list-unstyled">
+            <li><a href="doctors.html" class="text-decoration-none">Find a Doctor</a></li>
+            <li><a href="appointment.html" class="text-decoration-none">Appointments</a></li>
+            <li><a href="#" class="text-decoration-none">Patient Resources</a></li>
+            <li><a href="#" class="text-decoration-none">Billing & Insurance</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2">
+          <h6>Location</h6>
+          <p><i class="bi bi-geo-alt-fill" style="color: var(--primary-teal);"></i> Soroti East</p>
+        </div>
+      </div>
+      <hr class="my-4">
+      <div class="row text-secondary">
+        <div class="col-md-6 small">© 2026 Soroti Orthopaedic and Surgical Specialists’ Center. All rights reserved.</div>
+        <div class="col-md-6 text-md-end small">Twenty Twenty-Six · Designed with <i class="bi bi-bootstrap"></i></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- jQuery, Bootstrap JS, and custom interactive (matching original style) -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    $(document).ready(function(){
+
+      // 1. insurance toggle (extra fields)
+      $('#insuranceToggle').on('click', function(){
+        $('#insuranceExtra').slideToggle(300);
+        $(this).find('i').toggleClass('bi-plus-circle bi-dash-circle');
+      });
+
+      // 2. walk-in toggle
+      $('#walkinToggle').on('click', function(){
+        $('#walkinExtra').slideToggle(300);
+        $(this).find('i').toggleClass('bi-plus-circle bi-dash-circle');
+      });
+
+      // 3. on-call doctor toggle
+      $('#showOncallDoc').on('click', function(){
+        $('#oncallDocInfo').slideToggle(300);
+        $(this).find('i').toggleClass('bi-chevron-down bi-chevron-up');
+      });
+
+      // 4. map toggle (full location)
+      $('#showFullMapLink').on('click', function(){
+        $('#fullMapDemo').slideToggle(300);
+      });
+
+      // 5. appointment form submit simulation (non‑page refresh, demo)
+      $('#appointmentForm').on('submit', function(e){
+        e.preventDefault();   // prevent actual submit for demo
+        // very simple validation check on required fields
+        let name = $('#firstName').val().trim();
+        let phone = $('#phone').val().trim();
+        let service = $('#serviceType').val();
+        let date = $('#prefDate').val();
+        let consent = $('#confirmConsent').is(':checked');
+
+        if(!name || !phone || !service || !date || !consent){
+          alert('Please fill in all required fields (*) and agree to the consent.');
+          return;
+        }
+        if(phone.length < 9){
+          alert('Enter a valid phone number');
+          return;
+        }
+        // show demo message
+        $('#appointmentDemoMsg').fadeIn().delay(3000).fadeOut();
+        // optionally reset? we don't reset to keep demo comfortable
+        // but you can uncomment next line to clear: $('#appointmentForm')[0].reset();
+      });
+
+      // 6. (extra) subtle dynamic like original page: subscribe simulation for newsletter if exists
+      // not present here, but okay.
+
+    });
+  </script>
+</body>
+</html>

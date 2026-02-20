@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SOSSCL | Our Doctors & Specialists</title>
+  <!-- Bootstrap + calm hospital palette (teal/soft blues) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <style>
+    :root {
+      --hospital-bg: #f8fafc;
+      --primary-teal: #2a9d8f;
+      --soft-blue: #e6f2ff;
+      --calm-sky: #d9e9fa;
+      --accent-green: #2e7d73;
+      --neutral-white: #ffffff;
+      --text-dark: #1e2b37;
+      --text-soft: #3a4e5e;
+      --shadow-sm: 0 8px 20px rgba(0,40,30,0.05);
+    }
+    body {
+      background-color: var(--hospital-bg);
+      color: var(--text-dark);
+      font-family: 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+      scroll-behavior: smooth;
+    }
+    .navbar, .footer {
+      background-color: var(--neutral-white);
+      box-shadow: 0 4px 12px rgba(0,50,40,0.03);
+    }
+    .navbar-brand {
+      font-weight: 600;
+      color: var(--primary-teal) ;
+      letter-spacing: -0.3px;
+    }
+    .nav-link {
+      color: var(--text-soft) ;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .nav-link:hover {
+      color: var(--primary-teal) ;
+    }
+    .btn-hospital {
+      background-color: var(--primary-teal);
+      color: white;
+      border-radius: 30px;
+      padding: 0.5rem 1.8rem;
+      font-weight: 500;
+      border: none;
+      transition: all 0.2s;
+      box-shadow: 0 4px 8px rgba(42,157,143,0.2);
+    }
+    .btn-hospital:hover {
+      background-color: var(--accent-green);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 14px rgba(42,157,143,0.25);
+      color: white;
+    }
+    .btn-outline-hospital {
+      background-color: transparent;
+      border: 2px solid var(--primary-teal);
+      color: var(--primary-teal);
+      border-radius: 30px;
+      padding: 0.4rem 1.6rem;
+      font-weight: 500;
+    }
+    .btn-outline-hospital:hover {
+      background-color: var(--primary-teal);
+      color: white;
+    }
+    .hero {
+      background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+      padding: 4rem 0 3rem;
+    }
+    .badge-hospital {
+      background-color: var(--soft-blue);
+      color: var(--accent-green);
+      font-weight: 500;
+      padding: 0.4rem 1rem;
+      border-radius: 30px;
+    }
+    .service-card, .testimonial-card, .management-card, .feature-card {
+      background: var(--neutral-white);
+      border: none;
+      border-radius: 24px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+      height: 100%;
+      padding: 1.8rem 1.5rem;
+    }
+    .service-card:hover, .testimonial-card:hover, .management-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 20px 30px -8px rgba(0,80,70,0.12);
+    }
+    .icon-circle {
+      background-color: var(--soft-blue);
+      width: 64px;
+      height: 64px;
+      border-radius: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    .icon-circle i {
+      font-size: 2rem;
+      color: var(--primary-teal);
+    }
+    .section-title {
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      color: var(--text-soft);
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .stat-number {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--primary-teal);
+    }
+    .bg-soft-blue {
+      background-color: var(--calm-sky);
+    }
+    footer a {
+      color: var(--text-soft);
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+    footer a:hover {
+      color: var(--primary-teal);
+      text-decoration: underline;
+    }
+    .dynamic-counter {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent-green);
+    }
+    /* jQuery slide toggle */
+    .toggle-details {
+      cursor: pointer;
+      color: var(--primary-teal);
+      font-weight: 500;
+    }
+    .extra-content {
+      display: none;
+      background: #f9fdfe;
+      padding: 1.2rem;
+      border-radius: 16px;
+      margin-top: 1rem;
+      border-left: 4px solid var(--primary-teal);
+    }
+    :root {
+      --sosscl-teal: #2a9d8f;
+      --sosscl-teal-dark: #1f7a6e;
+      --sosscl-soft-blue: #e6f2ff;
+      --sosscl-light-teal: #d9f0ec;
+      --sosscl-white: #ffffff;
+      --sosscl-warm: #f8fafc;
+      --sosscl-text: #1e2b37;
+      --sosscl-grey: #3a4e5e;
+      --sosscl-shadow: 0 20px 35px -8px rgba(42,157,143,0.12);
+      --sosscl-border-light: rgba(42,157,143,0.15);
+    }
+    body {
+      background-color: var(--sosscl-warm);
+      color: var(--sosscl-text);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    }
+    .navbar-brand {
+      font-weight: 700;
+      color: var(--sosscl-teal) ;
+      font-size: 1.7rem;
+      letter-spacing: -0.4px;
+    }
+    .nav-link {
+      color: #2c3e4e ;
+      font-weight: 500;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: var(--sosscl-teal) ;
+    }
+    .btn-outline-teal {
+      border: 2px solid var(--sosscl-teal);
+      color: var(--sosscl-teal);
+      border-radius: 40px;
+      padding: 0.4rem 1.8rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .btn-outline-teal:hover {
+      background: var(--sosscl-teal);
+      color: white;
+    }
+    .hero-doctors {
+      background: linear-gradient(135deg, #ffffff 0%, #ecf6f4 100%);
+      padding: 3.5rem 0 2.5rem;
+    }
+    .section-title {
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    .badge-doctor {
+      background: var(--sosscl-soft-blue);
+      color: #1e5f56;
+      border-radius: 50px;
+      padding: 0.5rem 1.4rem;
+      font-weight: 500;
+      display: inline-block;
+    }
+    .doctor-card {
+      background: var(--sosscl-white);
+      border-radius: 32px;
+      padding: 2rem 1.8rem 1.8rem;
+      box-shadow: var(--sosscl-shadow);
+      height: 100%;
+      border: 1px solid var(--sosscl-border-light);
+      transition: transform 0.25s, box-shadow 0.25s;
+      position: relative;
+    }
+    .doctor-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 25px 40px -10px rgba(42,157,143,0.25);
+    }
+    .doctor-img {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--sosscl-light-teal);
+      margin-bottom: 1.2rem;
+    }
+    .doctor-specialty {
+      color: var(--sosscl-teal);
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.3px;
+    }
+    .doctor-word {
+      background: var(--sosscl-soft-blue);
+      padding: 1rem 1.2rem;
+      border-radius: 24px;
+      margin: 1.2rem 0 0.8rem;
+      font-style: italic;
+      position: relative;
+      border-left: 4px solid var(--sosscl-teal);
+    }
+    .doctor-word i {
+      color: var(--sosscl-teal);
+      margin-right: 4px;
+    }
+    .toggle-details {
+      color: var(--sosscl-teal);
+      font-weight: 500;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: 0.2s;
+    }
+    .toggle-details:hover {
+      text-decoration: underline;
+    }
+    .extra-bio {
+      display: none;
+      background: #f1faf8;
+      border-radius: 20px;
+      padding: 1.2rem;
+      margin-top: 1rem;
+      border-left: 5px solid var(--sosscl-teal);
+      font-size: 0.95rem;
+    }
+    .department-tag {
+      background: var(--sosscl-light-teal);
+      color: #0f5e52;
+      border-radius: 40px;
+      padding: 0.3rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-right: 0.3rem;
+    }
+    .leadership-badge {
+      background: #ffeed9;
+      color: #b1560f;
+      font-size: 0.75rem;
+      border-radius: 40px;
+      padding: 0.2rem 0.9rem;
+      font-weight: 600;
+    }
+    footer {
+      background: #1e2b37;
+      color: #cbd5e0;
+    }
+  </style>
+</head>
+<body>
+
+ <!-- sticky navbar -->
+  <nav class="navbar navbar-expand-lg sticky-top bg-white">
+    <div class="container">
+  <a class="navbar-brand" href="index.html">
+        <i class="bi bi-hospital me-2" style="color: var(--primary-teal);"></i>Soroti Orthopaedics
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="sosscl.html">SOSSCL</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link active fw-semibold" aria-current="page" href="doctors.html">Doctors</a></li>
+          <li class="nav-item"><a class="nav-link" href="premise.html">Premise</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <a href="appointment.html" class="btn btn-hospital btn-sm">Book Appointment</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- doctors hero -->
+  <section class="hero-doctors">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center">
+          <span class="badge-doctor mb-4"><i class="bi bi-stethoscope me-2"></i>Experienced & compassionate</span>
+          <h1 class="section-title">Our team of dedicated specialists</h1>
+          <p class="fs-5 text-secondary mt-3">Every doctor at SOSSCL brings years of expertise, a commitment to ethical care, and a personal touch. Get to know the people who will care for you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- doctor grid – each card includes name, specialty, word from them, and optional extra bio -->
+  <section class="py-5">
+    <div class="container">
+      <!-- filter / department tabs (just visual) -->
+      <div class="d-flex flex-wrap gap-2 justify-content-center mb-5">
+        <span class="department-tag">Orthopaedics</span>
+        <span class="department-tag">General Surgery</span>
+        <span class="department-tag">Anaesthesia</span>
+        <span class="department-tag">Radiology</span>
+        <span class="department-tag">Physiotherapy</span>
+        <span class="department-tag">Medicine</span>
+      </div>
+
+      <div class="row g-4">
+        <!-- 1. Dr. John Doe (Medical Director) -->
+        <div class="col-md-6 col-lg-4">
+          <div class="doctor-card">
+            <div class="d-flex flex-column align-items-center">
+              <img src="/img/img-20.jpg" class="doctor-img" alt="Dr. John Doe">
+              <span class="leadership-badge mb-2">Medical Director</span>
+              <h3 class="h4">Dr. John Doe</h3>
+              <span class="doctor-specialty">MBChB, MMed (Ortho) • Senior Orthopaedic Surgeon</span>
+              <!-- word from them -->
+              <div class="doctor-word">
+                <i class="bi bi-chat-quote-fill"></i> "My priority is to provide safe, high‑quality, and compassionate care to every patient. I believe in listening and shared decision‑making."
+              </div>
+              <!-- extra short bio toggle -->
+              <span class="toggle-details" data-target="bioJohn">📋 more about Dr. John</span>
+              <div class="extra-bio" id="bioJohn">
+                <p>Dr. John has over 20 years of experience in joint replacement and trauma surgery. He trained at Makerere University and completed a fellowship in South Africa. He leads the orthopaedic team and is passionate about mentoring young surgeons.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Dr. Sarah Okello (Consultant General Surgeon) -->
+        <div class="col-md-6 col-lg-4">
+          <div class="doctor-card">
+            <div class="d-flex flex-column align-items-center">
+              <img src="/img/img-21.jpg" class="doctor-img" alt="Dr. Sarah Okello">
+              <h3 class="h4">Dr. Sarah Okello</h3>
+              <span class="doctor-specialty">MBChB, MMed (Surg) • General & Laparoscopic Surgeon</span>
+              <div class="doctor-word">
+                <i class="bi bi-chat-quote-fill"></i> "I strive to make surgery less invasive and recovery faster. My goal is that every patient feels informed and at ease."
+              </div>
+              <span class="toggle-details" data-target="bioSarah">📋 more about Dr. Sarah</span>
+              <div class="extra-bio" id="bioSarah">
+                <p>Dr. Sarah introduced laparoscopic surgery at SOSSCL. She has a special interest in hernia repairs and gallbladder surgery. She also coordinates the surgical outreach camps.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Dr. Emmanuel Otim (Orthopaedic Surgeon) -->
+        <div class="col-md-6 col-lg-4">
+          <div class="doctor-card">
+            <div class="d-flex flex-column align-items-center">
+              <img src="/img/img-22.jpg" class="doctor-img" alt="Dr. Emmanuel Otim">
+              <h3 class="h4">Dr. Emmanuel Otim</h3>
+              <span class="doctor-specialty">MBChB, MMed (Ortho) • Paediatric Orthopaedics</span>
+              <div class="doctor-word">
+                <i class="bi bi-chat-quote-fill"></i> "Children are my passion. I love helping them regain mobility and smile again. Every child deserves a chance to run and play."
+              </div>
+              <span class="toggle-details" data-target="bioEmmanuel">📋 more about Dr. Emmanuel</span>
+              <div class="extra-bio" id="bioEmmanuel">
+                <p>Dr. Emmanuel sub-specializes in treating clubfoot, hip dysplasia, and limb deformities. He leads the school screening program and works closely with physiotherapists.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Dr. Grace Achieng (Anaesthesiologist) -->
+        <div class="col-md-6 col-lg-4">
+          <div class="doctor-card">
+            <div class="d-flex flex-column align-items-center">
+              <img src="/img/img-23.jpg" class="doctor-img" alt="Dr. Grace Achieng">
+              <h3 class="h4">Dr. Grace Achieng</h3>
+              <span class="doctor-specialty">MBChB, MMed (Anaes) • Consultant Anaesthesiologist</span>
+              <div class="doctor-word">
+                <i class="bi bi-chat-quote-fill"></i> "I ensure you are safe and comfortable during surgery. Anaesthesia is about trust and vigilance."
+              </div>
+              <span class="toggle-details" data-target="bioGrace">📋 more about Dr. Grace</span>
+              <div class="extra-bio" id="bioGrace">
+                <p>Dr. Grace heads the anaesthesia department. She has advanced training in regional anaesthesia and paediatric anaesthesia, and is a certified instructor in resuscitation.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Dr. Peter Edoku (Radiologist) -->
+        <div class="col-md-6 col-lg-4">
+          <div class="doctor-card">
+            <div class="d-flex flex-column align-items-center">
+              <img src="/img/img-24.jpg" class="doctor-img" alt="Dr. Peter Edoku">
+              <h3 class="h4">Dr. Peter Edoku</h3>
+              <span class="doctor-specialty">MBChB, MMed (Rad) • Radiologist</span>
+              <div class="doctor-word">
+                <i class="bi bi-chat-quote-fill"></i> "Accurate imaging is the foundation of correct diagnosis. I'm here to ensure every image tells the full story."
+              </div>
+              <span class="toggle-details" data-target="bioPeter">📋 more about Dr. Peter</span>
+              <div class="extra-bio" id="bioPeter">
+                <p>Dr. Peter oversees X‑ray, ultrasound, and basic CT interpretation. He works closely with surgeons to plan operations and reduce risks.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Dr. Betty Nambozo (Physiatrist / Rehabilitation) -->
+        <div class="col-md-6 col-lg-4">
+          <div class="doctor-card">
+            <div class="d-flex flex-column align-items-center">
+              <img src="/img/img-25.jpg" class="doctor-img" alt="Dr. Betty Nambozo">
+              <h3 class="h4">Dr. Betty Nambozo</h3>
+              <span class="doctor-specialty">MBChB, MSc Rehab • Rehabilitation Medicine</span>
+              <div class="doctor-word">
+                <i class="bi bi-chat-quote-fill"></i> "Recovery doesn't end in the operating room. I help patients regain strength and independence through tailored rehab."
+              </div>
+              <span class="toggle-details" data-target="bioBetty">📋 more about Dr. Betty</span>
+              <div class="extra-bio" id="bioBetty">
+                <p>Dr. Betty leads the physiotherapy and rehabilitation unit. She has special interest in stroke rehab and spinal cord injury management.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> <!-- end first row -->
+
+      <!-- second row: more doctors (associates) -->
+      <div class="row g-4 mt-3">
+        <div class="col-lg-3 col-md-6">
+          <div class="doctor-card text-center p-3">
+            <img src="/img/img-26.jpg" class="doctor-img" style="width:100px; height:100px;" alt="Dr. Charles O.">
+            <h5>Dr. Charles Omolo</h5>
+            <span class="doctor-specialty">Physician</span>
+            <div class="doctor-word small">"I care for your overall health — from diabetes to hypertension."</div>
+            <span class="toggle-details" data-target="bioCharles">➕ bio</span>
+            <div class="extra-bio" id="bioCharles">Dr. Charles manages medical conditions and pre‑operative assessments.</div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="doctor-card text-center p-3">
+            <img src="/img/img-27.jpg" class="doctor-img" style="width:100px; height:100px;" alt="Dr. Rose M.">
+            <h5>Dr. Rose Mwenyi</h5>
+            <span class="doctor-specialty">Pathologist (Microbiology)</span>
+            <div class="doctor-word small">"Accurate lab results guide your treatment."</div>
+            <span class="toggle-details" data-target="bioRose">➕ bio</span>
+            <div class="extra-bio" id="bioRose">Dr. Rose oversees the lab and infection control.</div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="doctor-card text-center p-3">
+            <img src="/img/img-28.jpg" class="doctor-img" style="width:100px; height:100px;" alt="Sr. Jane">
+            <h5>Sr. Jane Akello</h5>
+            <span class="doctor-specialty">Nursing Officer In‑charge</span>
+            <div class="doctor-word small">"Our nurses are here for you, day and night."</div>
+            <span class="toggle-details" data-target="bioJane">➕ note</span>
+            <div class="extra-bio" id="bioJane">Sr. Jane leads a team of 40+ nurses, ensuring compassionate care.</div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="doctor-card text-center p-3">
+            <img src="/img/img-29.jpg" class="doctor-img" style="width:100px; height:100px;" alt="Tom">
+            <h5>Tom Ocen</h5>
+            <span class="doctor-specialty">Senior Physiotherapist</span>
+            <div class="doctor-word small">"Movement is medicine — let's get you moving."</div>
+            <span class="toggle-details" data-target="bioTom">➕ bio</span>
+            <div class="extra-bio" id="bioTom">Tom specialises in post‑orthopaedic rehab and sports injuries.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- full team toggle (all remaining associates) -->
+      <div class="text-center mt-5">
+        <span class="toggle-details" id="moreTeamToggle"><i class="bi bi-people-fill me-2"></i>View all associate clinicians (15+)</span>
+      </div>
+      <div class="extra-content row g-3 mt-3" id="moreTeam" style="display: none;">
+        <div class="col-md-3">Dr. Michael E. – Orthopaedic officer</div>
+        <div class="col-md-3">Dr. Faith A. – Medical officer</div>
+        <div class="col-md-3">Dr. Simon P. – Anaesthetic officer</div>
+        <div class="col-md-3">Sr. Grace – NICU nurse</div>
+        <div class="col-md-3">Mr. David – plaster technician</div>
+        <div class="col-md-3">Ms. Sarah – dietitian</div>
+        <div class="col-md-3">Mr. Isaac – clinical psychologist</div>
+        <div class="col-md-3">Dr. Patricia – radiology officer</div>
+        <div class="col-12"><p class="text-secondary mt-2">… plus many dedicated nurses, interns, and support staff.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- message from the team (group) -->
+  <section class="py-5 bg-white">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+          <i class="bi bi-megaphone display-3" style="color: var(--sosscl-teal);"></i>
+          <h2 class="fw-semibold mt-3">A word from our clinical team</h2>
+          <p class="fs-5 fst-italic">"We don't just treat conditions — we care for people. Every member of our team, from surgeons to cleaners, works together to ensure you feel safe, respected, and healed. Your health is our mission."</p>
+          <p>— Dr. John Doe & the SOSSCL team</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- call to action: book a consultation with a doctor -->
+  <section style="background: var(--sosscl-teal); color: white;" class="py-5">
+    <div class="container text-center">
+      <h2 class="fw-semibold">Meet your doctor in person</h2>
+      <p class="fs-5 my-3">Schedule a consultation with any of our specialists. We're here to listen and help.</p>
+      <a href="appointment.html" class="btn btn-light btn-lg px-5 py-3 rounded-pill mt-2" style="color: var(--sosscl-teal); font-weight: 600;">Book appointment</a>
+      <p class="mt-4 small opacity-75">or call 0764 364 734 / 0374 364 363</p>
+    </div>
+  </section>
+ <!-- Footer with details -->
+  <footer class="footer pt-5 pb-4">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <h4 class="fw-semibold" style="color: var(--primary-teal);">Soroti Orthopaedics</h4>
+          <p class="text-secondary">Dedicated To Serve You With Compassion And Love</p>
+          <p>Plot 23, Orwadai, Soroti East (Opposite Impact Institute)<br>
+          Phone: 0764 364 734  | 0374 364 363<br>
+          <span class="badge-hospital mt-2">Open 24/7</span></p>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h6>Who We Are</h6>
+          <ul class="list-unstyled">
+            <li><a href="about.html" class="text-decoration-none">About the Hospital</a></li>
+            <li><a href="doctors.html" class="text-decoration-none">Our Doctors & Staff</a></li>
+            <li><a href="about.html#mission" class="text-decoration-none">Mission & Values</a></li>
+            <li><a href="about.html#quality" class="text-decoration-none">Quality & Safety</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h6>What We Do</h6>
+          <ul class="list-unstyled">
+            <li><a href="services.html" class="text-decoration-none">Medical Services</a></li>
+            <li><a href="services.html#emergency" class="text-decoration-none">Emergency Care</a></li>
+            <li><a href="services.html#diagnostics" class="text-decoration-none">Diagnostic & Lab</a></li>
+            <li><a href="services.html#preventive" class="text-decoration-none">Preventive Care</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h6>Need Help?</h6>
+          <ul class="list-unstyled">
+            <li><a href="doctors.html" class="text-decoration-none">Find a Doctor</a></li>
+            <li><a href="appointment.html" class="text-decoration-none">Appointments</a></li>
+            <li><a href="#" class="text-decoration-none">Patient Resources</a></li>
+            <li><a href="#" class="text-decoration-none">Billing & Insurance</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2">
+          <h6>Location</h6>
+          <p><i class="bi bi-geo-alt-fill" style="color: var(--primary-teal);"></i> Soroti East<br> <span class="toggle-details" id="showMapLink">(click to view map demo)</span></p>
+          <div class="extra-content small p-2 bg-light" id="mapDemo">📍 Orwadai, opposite Impact Institute – ambulance access 24/7.</div>
+        </div>
+      </div>
+      <hr class="my-4">
+      <div class="row text-secondary">
+        <div class="col-md-6 small">© 2026 Soroti Orthopaedic and Surgical Specialists’ Center. All rights reserved.</div>
+        <div class="col-md-6 text-md-end small">Twenty Twenty-Five · Designed with <i class="bi bi-wordpress"></i> & <i class="bi bi-bootstrap"></i></div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- jQuery & toggles -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      // toggle for individual doctor bios using data-target
+      $('.toggle-details[data-target]').click(function(e){
+        e.preventDefault();
+        var target = '#' + $(this).data('target');
+        $(target).slideToggle(300);
+        // change icon/text if needed
+        var $this = $(this);
+        if ($this.html().includes('📋 more')) {
+          $this.html($this.html().replace('📋 more', '📋 less'));
+        } else if ($this.html().includes('📋 less')) {
+          $this.html($this.html().replace('📋 less', '📋 more'));
+        } else if ($this.html().includes('➕ bio')) {
+          $this.html($this.html().replace('➕ bio', '➖ bio'));
+        } else if ($this.html().includes('➖ bio')) {
+          $this.html($this.html().replace('➖ bio', '➕ bio'));
+        } else if ($this.html().includes('➕ note')) {
+          $this.html($this.html().replace('➕ note', '➖ note'));
+        } else if ($this.html().includes('➖ note')) {
+          $this.html($this.html().replace('➖ note', '➕ note'));
+        }
+      });
+
+      // toggle for full team list (id based)
+      $('#moreTeamToggle').click(function(){
+        $('#moreTeam').slideToggle(300);
+        $(this).html(function(i, text){
+          return text.includes('View all') ? 'Hide associate clinicians' : 'View all associate clinicians (15+)';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SOSSCL | About Us – Mission, Team & Story</title>
+  <!-- Bootstrap + calm hospital palette (teal & soft blues) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <style>
+    :root {
+      --hospital-bg: #f8fafc;
+      --primary-teal: #2a9d8f;
+      --soft-blue: #e6f2ff;
+      --calm-sky: #d9e9fa;
+      --accent-green: #2e7d73;
+      --neutral-white: #ffffff;
+      --text-dark: #1e2b37;
+      --text-soft: #3a4e5e;
+      --shadow-sm: 0 8px 20px rgba(0,40,30,0.05);
+    }
+    body {
+      background-color: var(--hospital-bg);
+      color: var(--text-dark);
+      font-family: 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+      scroll-behavior: smooth;
+    }
+    .navbar, .footer {
+      background-color: var(--neutral-white);
+      box-shadow: 0 4px 12px rgba(0,50,40,0.03);
+    }
+    .navbar-brand {
+      font-weight: 600;
+      color: var(--primary-teal) !important;
+      letter-spacing: -0.3px;
+    }
+    .nav-link {
+      color: var(--text-soft) !important;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .nav-link:hover {
+      color: var(--primary-teal) !important;
+    }
+    .btn-hospital {
+      background-color: var(--primary-teal);
+      color: white;
+      border-radius: 30px;
+      padding: 0.5rem 1.8rem;
+      font-weight: 500;
+      border: none;
+      transition: all 0.2s;
+      box-shadow: 0 4px 8px rgba(42,157,143,0.2);
+    }
+    .btn-hospital:hover {
+      background-color: var(--accent-green);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 14px rgba(42,157,143,0.25);
+      color: white;
+    }
+    .btn-outline-hospital {
+      background-color: transparent;
+      border: 2px solid var(--primary-teal);
+      color: var(--primary-teal);
+      border-radius: 30px;
+      padding: 0.4rem 1.6rem;
+      font-weight: 500;
+    }
+    .btn-outline-hospital:hover {
+      background-color: var(--primary-teal);
+      color: white;
+    }
+    .hero {
+      background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+      padding: 4rem 0 3rem;
+    }
+    .badge-hospital {
+      background-color: var(--soft-blue);
+      color: var(--accent-green);
+      font-weight: 500;
+      padding: 0.4rem 1rem;
+      border-radius: 30px;
+    }
+    .service-card, .testimonial-card, .management-card, .feature-card {
+      background: var(--neutral-white);
+      border: none;
+      border-radius: 24px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+      height: 100%;
+      padding: 1.8rem 1.5rem;
+    }
+    .service-card:hover, .testimonial-card:hover, .management-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 20px 30px -8px rgba(0,80,70,0.12);
+    }
+    .icon-circle {
+      background-color: var(--soft-blue);
+      width: 64px;
+      height: 64px;
+      border-radius: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    .icon-circle i {
+      font-size: 2rem;
+      color: var(--primary-teal);
+    }
+    .section-title {
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      color: var(--text-soft);
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .stat-number {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--primary-teal);
+    }
+    .bg-soft-blue {
+      background-color: var(--calm-sky);
+    }
+    footer a {
+      color: var(--text-soft);
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+    footer a:hover {
+      color: var(--primary-teal);
+      text-decoration: underline;
+    }
+    .dynamic-counter {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent-green);
+    }
+    /* jQuery slide toggle */
+    .toggle-details {
+      cursor: pointer;
+      color: var(--primary-teal);
+      font-weight: 500;
+    }
+    .extra-content {
+      display: none;
+      background: #f9fdfe;
+      padding: 1.2rem;
+      border-radius: 16px;
+      margin-top: 1rem;
+      border-left: 4px solid var(--primary-teal);
+    }
+
+    :root {
+      --sosscl-teal: #2a9d8f;
+      --sosscl-teal-dark: #1f7a6e;
+      --sosscl-soft-blue: #e6f2ff;
+      --sosscl-light-teal: #d9f0ec;
+      --sosscl-white: #ffffff;
+      --sosscl-warm: #f8fafc;
+      --sosscl-text: #1e2b37;
+      --sosscl-grey: #3a4e5e;
+      --sosscl-shadow: 0 20px 35px -8px rgba(42,157,143,0.12);
+      --sosscl-border-light: rgba(42,157,143,0.15);
+    }
+    body {
+      background-color: var(--sosscl-warm);
+      color: var(--sosscl-text);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    }
+    .navbar-brand {
+      font-weight: 700;
+      color: var(--sosscl-teal) ;
+      font-size: 1.7rem;
+      letter-spacing: -0.4px;
+    }
+    .nav-link {
+      color: #2c3e4e ;
+      font-weight: 500;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: var(--sosscl-teal) ;
+    }
+    .btn-outline-teal {
+      border: 2px solid var(--sosscl-teal);
+      color: var(--sosscl-teal);
+      border-radius: 40px;
+      padding: 0.4rem 1.8rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .btn-outline-teal:hover {
+      background: var(--sosscl-teal);
+      color: white;
+    }
+    .btn-teal {
+      background: var(--sosscl-teal);
+      color: white;
+      border-radius: 40px;
+      padding: 0.6rem 2.2rem;
+      font-weight: 500;
+      border: none;
+      box-shadow: 0 6px 14px rgba(42,157,143,0.3);
+    }
+    .btn-teal:hover {
+      background: var(--sosscl-teal-dark);
+      color: white;
+    }
+    .hero-about {
+      background: linear-gradient(135deg, #ffffff 0%, #ecf6f4 100%);
+      padding: 4rem 0 3rem;
+    }
+    .section-title {
+      font-size: 2.8rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--sosscl-text);
+    }
+    .section-subtitle {
+      color: var(--sosscl-grey);
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .badge-about {
+      background: var(--sosscl-soft-blue);
+      color: #1e5f56;
+      border-radius: 50px;
+      padding: 0.5rem 1.4rem;
+      font-weight: 500;
+      display: inline-block;
+    }
+    .story-card, .value-card, .team-card {
+      background: var(--sosscl-white);
+      border-radius: 32px;
+      padding: 2.2rem;
+      box-shadow: var(--sosscl-shadow);
+      height: 100%;
+      border: 1px solid var(--sosscl-border-light);
+      transition: transform 0.25s;
+    }
+    .story-card:hover, .value-card:hover {
+      transform: translateY(-5px);
+    }
+    .value-icon {
+      background: var(--sosscl-soft-blue);
+      width: 70px;
+      height: 70px;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    .value-icon i {
+      font-size: 2.5rem;
+      color: var(--sosscl-teal);
+    }
+    .team-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--sosscl-light-teal);
+      margin-bottom: 1rem;
+    }
+    .timeline-item {
+      padding-left: 2rem;
+      border-left: 3px solid var(--sosscl-teal);
+      position: relative;
+      margin-bottom: 2rem;
+    }
+    .timeline-item:before {
+      content: '';
+      width: 16px;
+      height: 16px;
+      background: var(--sosscl-teal);
+      border-radius: 50%;
+      position: absolute;
+      left: -9px;
+      top: 5px;
+    }
+    .stat-number-lg {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--sosscl-teal);
+      line-height: 1;
+    }
+    .partner-logo {
+      background: #f1f9f7;
+      border-radius: 60px;
+      padding: 0.8rem 1.8rem;
+      display: inline-block;
+      margin: 0.3rem;
+      font-weight: 500;
+    }
+    .toggle-details {
+      color: var(--sosscl-teal);
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-block;
+      transition: 0.2s;
+    }
+    .toggle-details:hover {
+      text-decoration: underline;
+    }
+    .extra-content {
+      display: none;
+      background: #f1faf8;
+      border-radius: 24px;
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+      border-left: 6px solid var(--sosscl-teal);
+    }
+    footer {
+      background: #1e2b37;
+      color: #cbd5e0;
+    }
+  </style>
+</head>
+<body>
+  <!-- sticky navbar -->
+  <nav class="navbar navbar-expand-lg sticky-top bg-white">
+    <div class="container">
+  <a class="navbar-brand" href="index.html">
+        <i class="bi bi-hospital me-2" style="color: var(--primary-teal);"></i>Soroti Orthopaedics
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="sosscl.html">SOSSCL</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="doctors.html">Doctors</a></li>
+          <li class="nav-item"><a class="nav-link" href="premise.html">Premise</a></li>
+          <li class="nav-item"><a class="nav-link active fw-semibold" href="about.html">About</a></li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <a href="appointment.html" class="btn btn-hospital btn-sm">Book Appointment</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- about hero -->
+  <section class="hero-about">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center">
+          <span class="badge-about mb-4"><i class="bi bi-heart-pulse me-2"></i>Who we are</span>
+          <h1 class="section-title">Compassionate, ethical, & patient‑centered</h1>
+          <p class="section-subtitle mt-3">Soroti Orthopaedic and Surgical Specialists Centre Limited (SOSSCL) has been serving the community with dedication since 2012. We combine clinical excellence with a deep respect for every person who walks through our doors.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- our story (detailed, with timeline) -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row g-5 align-items-start">
+        <div class="col-lg-6">
+          <h2 class="fw-semibold mb-4">Our story: from a vision to a healing centre</h2>
+          <div class="timeline-item">
+            <h5>2012 – Foundation</h5>
+            <p>Founded by Dr. John Doe and a group of orthopaedic specialists, SOSSCL opened as a small clinic with 10 beds, focused on trauma care and basic surgery.</p>
+          </div>
+          <div class="timeline-item">
+            <h5>2016 – Expansion</h5>
+            <p>Added a dedicated orthopaedic ward, modern operating theatre, and 24/7 emergency services. Grew to 35 beds and recruited specialist nurses.</p>
+          </div>
+          <div class="timeline-item">
+            <h5>2020 – Comprehensive care</h5>
+            <p>Opened a full-service laboratory, physiotherapy department, and outpatient wing. Became a referral centre for eastern Uganda.</p>
+          </div>
+          <div class="timeline-item">
+            <h5>2024 – Centre of excellence</h5>
+            <p>Today SOSSCL is a 70‑bed facility with over 15 specialists, serving thousands of patients annually with orthopaedic, surgical, and diagnostic services.</p>
+          </div>
+          <!-- jQuery toggle for more historical details -->
+          <span class="toggle-details" id="moreHistoryToggle"><i class="bi bi-plus-circle me-2"></i>Read more about our journey</span>
+          <div class="extra-content" id="moreHistory">
+            <p><strong>2018:</strong> Introduced community outreach programs – free orthopaedic camps in Soroti, Katakwi, and Amuria.</p>
+            <p><strong>2022:</strong> Launched the nursing scholarship fund for local students.</p>
+            <p><strong>2025:</strong> Broke ground on a new rehabilitation wing with hydrotherapy pool (due late 2026).</p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <img src="/img/img-31.jpg" alt="SOSSCL team through the years" class="img-fluid rounded-5 shadow">
+          <p class="text-center text-secondary mt-3">Founding team at the original clinic (2012)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- mission, vision & values (3 cards) -->
+  <section class="py-4 bg-white" id="mission">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="value-card text-center p-4">
+            <div class="value-icon mx-auto"><i class="bi bi-bullseye"></i></div>
+            <h3>Our mission</h3>
+            <p>To deliver accessible, high‑quality, and compassionate orthopaedic and surgical care to every patient, with a focus on ethics, professionalism, and community well‑being.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="value-card text-center p-4">
+            <div class="value-icon mx-auto"><i class="bi bi-eye"></i></div>
+            <h3>Our vision</h3>
+            <p>To be the leading orthopaedic and surgical centre in eastern Uganda – trusted for clinical excellence, innovation, and patient‑centred warmth.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="value-card text-center p-4">
+            <div class="value-icon mx-auto"><i class="bi bi-suit-heart"></i></div>
+            <h3>Our values</h3>
+            <p>Compassion, integrity, excellence, respect, and community. These guide every interaction and decision.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- leadership & board (detailed team) -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="fw-semibold text-center mb-5">Leadership & clinical team</h2>
+      <div class="row g-4">
+        <div class="col-lg-3 col-md-6">
+          <div class="team-card text-center">
+            <img src="/img/img-32.jpg" class="team-img" alt="Dr. John Doe">
+            <h4>Dr. John Doe</h4>
+            <p class="text-teal fw-semibold">Medical Director & Senior Orthopaedic Surgeon</p>
+            <p>MBChB, MMed (Ortho), Fellow of College of Surgeons. 20+ years experience in joint replacement and trauma.</p>
+            <span class="toggle-details" data-target="bioJohn">➕ short bio</span>
+            <div class="extra-details" id="bioJohn">
+              <p>Dr. John trained at Makerere and in South Africa. He leads the surgical team and is passionate about medical education.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="team-card text-center">
+            <img src="/img/img-33.jpg" class="team-img" alt="Dr. Sarah Okello">
+            <h4>Dr. Sarah Okello</h4>
+            <p class="text-teal fw-semibold">Consultant General Surgeon</p>
+            <p>MBChB, MMed (Surg), specialized in laparoscopic surgery. Head of surgical department.</p>
+            <span class="toggle-details" data-target="bioSarah">➕ short bio</span>
+            <div class="extra-details" id="bioSarah">
+              <p>Dr. Sarah introduced minimally invasive surgery at SOSSCL. She also oversees the surgical residency program.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="team-card text-center">
+            <img src="/img/img-34.jpg" class="team-img" alt="Jane Doe">
+            <h4>Jane Doe</h4>
+            <p class="text-teal fw-semibold">Hospital Administrator</p>
+            <p>MBA, Healthcare Management. 15 years in hospital operations, patient experience, and finance.</p>
+            <span class="toggle-details" data-target="bioJane">➕ short bio</span>
+            <div class="extra-details" id="bioJane">
+              <p>Jane ensures smooth day‑to‑day running and that patient feedback drives improvement.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="team-card text-center">
+            <img src="/img/img-35.jpg" class="team-img" alt="Justin Doe">
+            <h4>Justin Doe</h4>
+            <p class="text-teal fw-semibold">Head of Nursing Services</p>
+            <p>BSN, MSc in Nursing Leadership. Oversees all nursing units and patient care standards.</p>
+            <span class="toggle-details" data-target="bioJustin">➕ short bio</span>
+            <div class="extra-details" id="bioJustin">
+              <p>Justin introduced the "compassionate care" nursing charter and continuous training programs.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- toggle for more team members (associates) -->
+      <div class="text-center mt-5">
+        <span class="toggle-details" id="moreTeamToggle"><i class="bi bi-people-fill me-2"></i>View associate doctors & specialists (12+)</span>
+      </div>
+      <div class="extra-content row g-3 mt-3" id="moreTeam">
+        <div class="col-md-4">Dr. Emmanuel O. – Orthopaedics</div>
+        <div class="col-md-4">Dr. Grace A. – Anaesthesia</div>
+        <div class="col-md-4">Dr. Peter E. – Radiologist</div>
+        <div class="col-md-4">Dr. Betty N. – Paediatric surgeon</div>
+        <div class="col-md-4">Dr. Charles O. – Physician</div>
+        <div class="col-md-4">Dr. Rose M. – Pathologist</div>
+        <p class="mt-2">… plus clinical officers, physiotherapists, and a dedicated nursing team of 40+.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- quality & safety / accreditations -->
+  <section class="py-5 bg-white" id="quality">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center">
+          <h2 class="fw-semibold mb-4">Commitment to quality & safety</h2>
+          <p class="fs-5">SOSSCL follows strict infection control, surgical safety checklists, and continuous medical education. We are registered with the Uganda Medical and Dental Practitioners Council and partner with:</p>
+          <div class="d-flex flex-wrap justify-content-center gap-2 mt-4">
+            <span class="partner-logo">Ministry of Health (Uganda)</span>
+            <span class="partner-logo">Uganda Orthopaedic Association</span>
+            <span class="partner-logo">Safe Surgery 2025</span>
+            <span class="partner-logo">Infection Control Society</span>
+          </div>
+          <div class="row mt-5 g-4">
+            <div class="col-4">
+              <div class="stat-number-lg">99.2%</div>
+              <span>patient satisfaction</span>
+            </div>
+            <div class="col-4">
+              <div class="stat-number-lg">0%</div>
+              <span>SSI (surgical site infection) rate in 2025</span>
+            </div>
+            <div class="col-4">
+              <div class="stat-number-lg">24/7</div>
+              <span>consultant coverage</span>
+            </div>
+          </div>
+          <!-- extra quality toggle -->
+          <span class="toggle-details mt-4 d-inline-block" id="qualityToggle">📋 read about our safety protocols</span>
+          <div class="extra-content text-start" id="qualityExtra">
+            <ul>
+              <li>WHO surgical safety checklist used in every operation</li>
+              <li>Regular infection control audits & sterilisation monitoring</li>
+              <li>Antibiotic stewardship program</li>
+              <li>Incident reporting & peer review</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- community involvement / outreach (detailed) -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <h2 class="fw-semibold mb-4">Beyond our walls: community first</h2>
+          <p>We believe healthcare extends to the community. SOSSCL organises free medical camps, health education in schools, and supports vulnerable patients through our social fund.</p>
+          <ul class="list-unstyled">
+            <li><i class="bi bi-check-circle-fill me-2" style="color: var(--sosscl-teal);"></i> Annual orthopaedic camp in Katakwi (500+ patients screened)</li>
+            <li><i class="bi bi-check-circle-fill me-2" style="color: var(--sosscl-teal);"></i> School scoliosis screening program</li>
+            <li><i class="bi bi-check-circle-fill me-2" style="color: var(--sosscl-teal);"></i> Emergency fund for those unable to pay</li>
+            <li><i class="bi bi-check-circle-fill me-2" style="color: var(--sosscl-teal);"></i> Training local village health teams</li>
+          </ul>
+          <span class="toggle-details" id="outreachToggle">➕ details on past outreach</span>
+          <div class="extra-content" id="outreachExtra">
+            <p>In 2025 alone, we held 4 camps, treated 1,200+ patients, and donated mobility aids to 80 individuals. Our team also volunteers at local orphanages.</p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <img src="/img/img-36.jpg" alt="Community outreach" class="img-fluid rounded-5 shadow">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- patient testimonials / about page variation -->
+  <section class="py-5 bg-white">
+    <div class="container">
+      <h2 class="fw-semibold text-center mb-5">What patients say about us</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="p-4 rounded-4 shadow-sm bg-light h-100">
+            <i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i>
+            <p class="mt-2 fst-italic">"The doctors took time to explain my mother's surgery. We felt truly cared for." – Akurut C.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-4 rounded-4 shadow-sm bg-light h-100">
+            <i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i>
+            <p class="mt-2 fst-italic">"Clean facility, kind nurses, and the food was surprisingly good!" – Okello J.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-4 rounded-4 shadow-sm bg-light h-100">
+            <i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i>
+            <p class="mt-2 fst-italic">"Best orthopaedic care in the region. I'm walking without pain now." – Ademingu T.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- call to action: join us / contact -->
+  <section style="background: var(--sosscl-teal); color: white;" class="py-5">
+    <div class="container text-center">
+      <h2 class="fw-semibold">We’d love to welcome you</h2>
+      <p class="fs-5 my-3">Whether you need care, want to partner with us, or simply wish to learn more — our doors are always open.</p>
+      <a href="#" class="btn btn-light btn-lg px-5 py-3 rounded-pill mt-2" style="color: var(--sosscl-teal); font-weight: 600;">Contact us</a>
+      <p class="mt-4 small opacity-75">Plot 23, Orwadai, Soroti East | 0764 364 734 / 0374 364 363</p>
+    </div>
+  </section>
+
+   <!-- Footer with details -->
+  <footer class="footer pt-5 pb-4">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <h4 class="fw-semibold" style="color: var(--primary-teal);">Soroti Orthopaedics</h4>
+          <p class="text-secondary">Dedicated To Serve You With Compassion And Love</p>
+          <p>Plot 23, Orwadai, Soroti East (Opposite Impact Institute)<br>
+          Phone: 0764 364 734  | 0374 364 363<br>
+          <span class="badge-hospital mt-2">Open 24/7</span></p>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h6>Who We Are</h6>
+          <ul class="list-unstyled">
+            <li><a href="about.html" class="text-decoration-none">About the Hospital</a></li>
+            <li><a href="doctors.html" class="text-decoration-none">Our Doctors & Staff</a></li>
+            <li><a href="about.html#mission" class="text-decoration-none">Mission & Values</a></li>
+            <li><a href="about.html#quality" class="text-decoration-none">Quality & Safety</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h6>What We Do</h6>
+          <ul class="list-unstyled">
+            <li><a href="services.html" class="text-decoration-none">Medical Services</a></li>
+            <li><a href="services.html#emergency" class="text-decoration-none">Emergency Care</a></li>
+            <li><a href="services.html#diagnostics" class="text-decoration-none">Diagnostic & Lab</a></li>
+            <li><a href="services.html#preventive" class="text-decoration-none">Preventive Care</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h6>Need Help?</h6>
+          <ul class="list-unstyled">
+            <li><a href="doctors.html" class="text-decoration-none">Find a Doctor</a></li>
+            <li><a href="appointment.html" class="text-decoration-none">Appointments</a></li>
+            <li><a href="#" class="text-decoration-none">Patient Resources</a></li>
+            <li><a href="#" class="text-decoration-none">Billing & Insurance</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2">
+          <h6>Location</h6>
+          <p><i class="bi bi-geo-alt-fill" style="color: var(--primary-teal);"></i> Soroti East<br> <span class="toggle-details" id="showMapLink">(click to view map demo)</span></p>
+          <div class="extra-content small p-2 bg-light" id="mapDemo">📍 Orwadai, opposite Impact Institute – ambulance access 24/7.</div>
+        </div>
+      </div>
+      <hr class="my-4">
+      <div class="row text-secondary">
+        <div class="col-md-6 small">© 2026 Soroti Orthopaedic and Surgical Specialists’ Center. All rights reserved.</div>
+        <div class="col-md-6 text-md-end small">Twenty Twenty-Five · Designed with <i class="bi bi-wordpress"></i> & <i class="bi bi-bootstrap"></i></div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- jQuery & toggles -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      // generic toggle for any element with .toggle-details and data-target or id
+      $('.toggle-details').each(function(){
+        $(this).click(function(e){
+          e.preventDefault();
+          var target;
+          if ($(this).data('target')) {
+            target = '#' + $(this).data('target');
+          } else {
+            // map to specific ids based on toggle ids
+            if ($(this).attr('id') === 'moreHistoryToggle') target = '#moreHistory';
+            else if ($(this).attr('id') === 'moreTeamToggle') target = '#moreTeam';
+            else if ($(this).attr('id') === 'qualityToggle') target = '#qualityExtra';
+            else if ($(this).attr('id') === 'outreachToggle') target = '#outreachExtra';
+            else return;
+          }
+          $(target).slideToggle(300);
+          // toggle icon/text
+          var $this = $(this);
+          if ($this.html().includes('➕')) {
+            $this.html($this.html().replace('➕', '➖'));
+          } else if ($this.html().includes('➖')) {
+            $this.html($this.html().replace('➖', '➕'));
+          } else if ($this.attr('id') === 'moreHistoryToggle') {
+            $this.html($this.html().includes('Read more') ? '📖 Show less' : '📖 Read more about our journey');
+          }
+        });
+      });
+
+      // individual bio toggles (data-target already set)
+      $('[data-target]').click(function(e){
+        e.preventDefault();
+        var target = '#' + $(this).data('target');
+        $(target).slideToggle(200);
+      });
+    });
+  </script>
+</body>
+</html>
