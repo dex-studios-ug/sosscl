@@ -7,6 +7,7 @@
   <!-- Bootstrap + jquery + calm hospital palette -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --sosscl-teal: #2a9d8f;
@@ -20,7 +21,7 @@
     body {
       background-color: var(--sosscl-warm);
       color: var(--sosscl-text);
-      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      font-family: 'Manrope', sans-serif;
     }
     .navbar-brand {
       font-weight: 700;
@@ -130,10 +131,16 @@
       display: inline-block;
       margin: 0.25rem;
     }
-    footer {
-      background: #1e2b37;
-      color: #cbd5e0;
+    footer, .footer {
+      background: #1f7a6e !important;
+      color: white;
     }
+    footer h4, footer h5, footer h6 { color: white !important; }
+    footer p { color: rgba(255,255,255,0.85); }
+    footer a { color: rgba(255,255,255,0.85); text-decoration: none; }
+    footer a:hover { color: white; text-decoration: underline; }
+    footer hr { border-color: rgba(255,255,255,0.2) !important; }
+    footer .text-secondary { color: rgba(255,255,255,0.85) !important; }
     .toggle-desc {
       cursor: pointer;
       color: var(--sosscl-teal);
@@ -165,10 +172,10 @@
     body {
       background-color: var(--hospital-bg);
       color: var(--text-dark);
-      font-family: 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+      font-family: 'Manrope', sans-serif;
       scroll-behavior: smooth;
     }
-    .navbar, .footer {
+    .navbar {
       background-color: var(--neutral-white);
       box-shadow: 0 4px 12px rgba(0,50,40,0.03);
     }
@@ -306,7 +313,7 @@
   <nav class="navbar navbar-expand-lg sticky-top bg-white">
     <div class="container">
       <a class="navbar-brand" href="index.html">
-        <i class="bi bi-hospital me-2" style="color: var(--primary-teal);"></i>Soroti Orthopaedics
+        <img src="/img/logo.png" height="38" alt="SOSSCL" class="me-2" style="object-fit:contain;vertical-align:middle;">Soroti Orthopaedics
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -327,7 +334,7 @@
   </nav>
 
   <!-- premise hero / intro -->
-  <section class="hero-premise">
+  <section class="hero-premise" style="background-image: linear-gradient(135deg, rgba(255,255,255,0.92) 0%, rgba(240,249,247,0.92) 100%), url('/img/facility-interior.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-8 mx-auto text-center">
@@ -346,7 +353,7 @@
         <!-- 1. Main reception -->
         <div class="col-md-6 col-lg-4">
           <div class="gallery-card">
-            <div class="gallery-img" style="background-image: url('/img/logo.png');">
+            <div class="gallery-img" style="background-image: url('/img/waiting\ area.jpg');">
               <div class="img-overlay"></div>
               <span class="gallery-tag"><i class="bi bi-door-open me-1"></i> reception</span>
             </div>
@@ -361,7 +368,7 @@
         <!-- 2. Orthopaedic ward -->
         <div class="col-md-6 col-lg-4">
           <div class="gallery-card">
-            <div class="gallery-img" style="background-image: url('/img/logo.png');">
+            <div class="gallery-img" style="background-image: url('/img/ward-room.jpg');">
               <span class="gallery-tag"><i class="bi bi-person-wheelchair me-1"></i> orthopaedic ward</span>
             </div>
             <div class="premise-desc">
@@ -375,7 +382,7 @@
         <!-- 3. State‑of‑the‑art operating theatre -->
         <div class="col-md-6 col-lg-4">
           <div class="gallery-card">
-            <div class="gallery-img" style="background-image: url('/img/logo.png');">
+            <div class="gallery-img" style="background-image: url('/img/full-lab-interior.jpg');">
               <span class="gallery-tag"><i class="bi bi-heart-pulse me-1"></i> operation theatre</span>
             </div>
             <div class="premise-desc">
@@ -389,7 +396,7 @@
         <!-- 4. Rehabilitation & physio gym -->
         <div class="col-md-6 col-lg-4">
           <div class="gallery-card">
-            <div class="gallery-img" style="background-image: url('/img/logo.png');">
+            <div class="gallery-img" style="background-image: url('/img/facility-interior.jpg');">
               <span class="gallery-tag"><i class="bi bi-activity me-1"></i> physiotherapy</span>
             </div>
             <div class="premise-desc">
@@ -403,7 +410,7 @@
         <!-- 5. Laboratory & diagnostics -->
         <div class="col-md-6 col-lg-4">
           <div class="gallery-card">
-            <div class="gallery-img" style="background-image: url('/img/logo.png');">
+            <div class="gallery-img" style="background-image: url('/img/bio-chemistry-analyser.jpg');">
               <span class="gallery-tag"><i class="bi bi-microscope me-1"></i> diagnostics</span>
             </div>
             <div class="premise-desc">
@@ -417,7 +424,7 @@
         <!-- 6. Pharmacy & outpatient wing -->
         <div class="col-md-6 col-lg-4">
           <div class="gallery-card">
-            <div class="gallery-img" style="background-image: url('/img/logo.png');">
+            <div class="gallery-img" style="background-image: url('/img/pharmacy.jpg');">
               <span class="gallery-tag"><i class="bi bi-capsule me-1"></i> pharmacy</span>
             </div>
             <div class="premise-desc">
@@ -434,7 +441,7 @@
       <div class="row g-4 mt-2">
         <div class="col-md-4">
           <div class="gallery-card">
-            <div class="gallery-img" style="background-image: url('/img/logo.png');">
+            <div class="gallery-img" style="background-image: url('/img/tiled\ ineriors.jpg');">
               <span class="gallery-tag"><i class="bi bi-cup-hot me-1"></i> cafeteria</span>
             </div>
             <div class="premise-desc">
@@ -447,7 +454,7 @@
         </div>
         <div class="col-md-4">
           <div class="gallery-card">
-            <div class="gallery-img" style="background-image: url('/img/logo.png');">
+            <div class="gallery-img" style="background-image: url('/img/emergency-vehicle.jpg');">
               <span class="gallery-tag"><i class="bi bi-truck-front me-1"></i> emergency</span>
             </div>
             <div class="premise-desc">
@@ -460,7 +467,7 @@
         </div>
         <div class="col-md-4">
           <div class="gallery-card">
-            <div class="gallery-img" style="background-image: url('/img/logo.png');">
+            <div class="gallery-img" style="background-image: url('/img/facility-gate-enclosure.jpg');">
               <span class="gallery-tag"><i class="bi bi-building me-1"></i> administration</span>
             </div>
             <div class="premise-desc">
@@ -583,19 +590,7 @@
         <div class="col-md-6 text-md-end small">Designed & maintained by <a href="https://webdev.dexstudios.site">dex-studios-ug</a><i class="bi bi-wordpress"></i> & <i class="bi bi-bootstrap"></i></div>
       </div>
     </div>
-  <!-- optional map / location row (jQuery toggle) -->
-      <div class="row mt-5">
-        <div class="col-12">
-          <div class="bg-white p-3 rounded-4 d-flex flex-wrap align-items-center justify-content-between">
-            <span><i class="bi bi-geo-alt-fill me-2" style="color: var(--primary-teal);"></i> Plot 23, Orwadai, Soroti East (Opposite Impact Institute)</span>
-            <span class="toggle-details" id="showFullMapLink">📌 view location details</span>
-          </div>
-          <div class="extra-content mt-2 p-3 bg-light rounded" id="fullMapDemo">
-            <iframe title="demo map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.29781217243!2d33.622!3d1.715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMcKwNDInNTQuMCJOIDMzwrAzNycyMS4wIkU!5e0!3m2!1sen!2sug!4v1620000000000" width="100%" height="200" style="border:0; border-radius:16px;" allowfullscreen="" loading="lazy"></iframe>
-            <p class="small mt-2">Ambulance entrance: open 24/7 · free parking</p>
-          </div>
-        </div>
-      </div></footer>
+</footer>
 
   
 

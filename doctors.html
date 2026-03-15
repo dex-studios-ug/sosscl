@@ -7,6 +7,7 @@
   <!-- Bootstrap + calm hospital palette (teal/soft blues) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --hospital-bg: #f8fafc;
@@ -22,7 +23,7 @@
     body {
       background-color: var(--hospital-bg);
       color: var(--text-dark);
-      font-family: 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+      font-family: 'Manrope', sans-serif;
       scroll-behavior: smooth;
     }
     .navbar, .footer {
@@ -128,12 +129,12 @@
       background-color: var(--calm-sky);
     }
     footer a {
-      color: var(--text-soft);
+      color: rgba(255,255,255,0.85);
       text-decoration: none;
       font-size: 0.95rem;
     }
     footer a:hover {
-      color: var(--primary-teal);
+      color: white;
       text-decoration: underline;
     }
     .dynamic-counter {
@@ -161,7 +162,7 @@
       --sosscl-soft-blue: #e6f2ff;
       --sosscl-light-teal: #d9f0ec;
       --sosscl-white: #ffffff;
-      --sosscl-warm: #f8fafc;
+      --sosscl-warm: #edf4f4;
       --sosscl-text: #1e2b37;
       --sosscl-grey: #3a4e5e;
       --sosscl-shadow: 0 20px 35px -8px rgba(42,157,143,0.12);
@@ -170,7 +171,7 @@
     body {
       background-color: var(--sosscl-warm);
       color: var(--sosscl-text);
-      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      font-family: 'Manrope', sans-serif;
     }
     .navbar-brand {
       font-weight: 700;
@@ -292,10 +293,14 @@
       padding: 0.2rem 0.9rem;
       font-weight: 600;
     }
-    footer {
-      background: #1e2b37;
-      color: #cbd5e0;
+    footer, .footer {
+      background: #1f7a6e !important;
+      color: white;
     }
+    footer h4, footer h5, footer h6 { color: white !important; }
+    footer p { color: rgba(255,255,255,0.85); }
+    footer hr { border-color: rgba(255,255,255,0.2) !important; }
+    footer .text-secondary { color: rgba(255,255,255,0.85) !important; }
   </style>
 </head>
 <body>
@@ -304,7 +309,7 @@
   <nav class="navbar navbar-expand-lg sticky-top bg-white">
     <div class="container">
       <a class="navbar-brand" href="index.html">
-        <i class="bi bi-hospital me-2" style="color: var(--primary-teal);"></i>Soroti Orthopaedics
+        <img src="/img/logo.png" height="38" alt="SOSSCL" class="me-2" style="object-fit:contain;vertical-align:middle;">Soroti Orthopaedics
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -324,7 +329,7 @@
     </div>
   </nav>
   <!-- doctors hero -->
-  <section class="hero-doctors">
+  <section class="hero-doctors" style="background-image: linear-gradient(135deg, rgba(255,255,255,0.94) 0%, rgba(236,246,244,0.94) 100%), url('/img/facility-interior.jpg'); background-size: cover; background-position: center;">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto text-center">
@@ -357,182 +362,99 @@
               <img src="/img/dr emusugut.jpeg" class="doctor-img" alt="Dr. Michael Emusugut">
               <span class="leadership-badge mb-2">Medical Director</span>
               <h3 class="h4">Dr. Michael Emusugut</h3>
-              <span class="doctor-specialty">MBChB, MMed (Ortho) • Senior Orthopaedic Surgeon</span>
-              <!-- word from them -->
+              <span class="doctor-specialty">Senior Orthopaedic Surgeon</span>
               <div class="doctor-word">
                 <i class="bi bi-chat-quote-fill"></i> "My priority is to provide safe, high‑quality, and compassionate care to every patient. I believe in listening and shared decision‑making."
               </div>
-              <!-- extra short bio toggle -->
-              <span class="toggle-details" data-target="bioJohn">📋 more about Dr. John</span>
-              <div class="extra-bio" id="bioJohn">
-                <p>Dr. John has over 20 years of experience in joint replacement and trauma surgery. He trained at Makerere University and completed a fellowship in South Africa. He leads the orthopaedic team and is passionate about mentoring young surgeons.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Dr. Tom Oria (Chief Medical Officer) -->
+        <div class="col-md-6 col-lg-4">
+          <div class="doctor-card">
+            <div class="d-flex flex-column align-items-center">
+              <img src="/img/dr tom oria - chief medical officer.jpg" class="doctor-img" alt="Dr. Tom Oria">
+              <span class="leadership-badge mb-2">Chief Medical Officer</span>
+              <h3 class="h4">Dr. Tom Oria</h3>
+              <span class="doctor-specialty">Consultant Physician</span>
+              <div class="doctor-word">
+                <i class="bi bi-chat-quote-fill"></i> "Clinical excellence and patient safety are non-negotiable. I lead our medical team with a commitment to evidence-based practice and continuous improvement."
               </div>
             </div>
           </div>
         </div>
 
-        <!-- 2. Dr. Sarah Okello (Consultant General Surgeon) -->
+        <!-- 3. Dr. Susan Atai (Physician) -->
         <div class="col-md-6 col-lg-4">
           <div class="doctor-card">
             <div class="d-flex flex-column align-items-center">
-              <img src="/img/nagla-labtechnician.jpg" class="doctor-img" alt="Dr. Sarah Okello">
-              <h3 class="h4">Dr. Sarah Okello</h3>
-              <span class="doctor-specialty">MBChB, MMed (Surg) • General & Laparoscopic Surgeon</span>
+              <img src="/img/susanatai.jpg" class="doctor-img" alt="Dr. Susan Atai">
+              <h3 class="h4">Dr. Susan Atai</h3>
+              <span class="doctor-specialty">Physician</span>
               <div class="doctor-word">
-                <i class="bi bi-chat-quote-fill"></i> "I strive to make surgery less invasive and recovery faster. My goal is that every patient feels informed and at ease."
-              </div>
-              <span class="toggle-details" data-target="bioSarah">📋 more about Dr. Sarah</span>
-              <div class="extra-bio" id="bioSarah">
-                <p>Dr. Sarah introduced laparoscopic surgery at SOSSCL. She has a special interest in hernia repairs and gallbladder surgery. She also coordinates the surgical outreach camps.</p>
+                <i class="bi bi-chat-quote-fill"></i> "Medicine is about understanding the whole person. I take time to listen, diagnose accurately, and develop treatment plans tailored to each patient's needs."
               </div>
             </div>
           </div>
         </div>
 
-        <!-- 3. Dr. Emmanuel Otim (Orthopaedic Surgeon) -->
+        <!-- 4. Dr. Nicholas Iyamitai (Physician) -->
         <div class="col-md-6 col-lg-4">
           <div class="doctor-card">
             <div class="d-flex flex-column align-items-center">
-              <img src="/img/nagla-looking-in-microscope.jpg" class="doctor-img" alt="Dr. Emmanuel Otim">
-              <h3 class="h4">Dr. Emmanuel Otim</h3>
-              <span class="doctor-specialty">MBChB, MMed (Ortho) • Paediatric Orthopaedics</span>
+              <div class="doctor-img d-flex align-items-center justify-content-center" style="background: var(--sosscl-light-teal); font-size: 3rem; font-weight: 700; color: var(--sosscl-teal);">NI</div>
+              <h3 class="h4">Dr. Nicholas Iyamitai</h3>
+              <span class="doctor-specialty">Physician</span>
               <div class="doctor-word">
-                <i class="bi bi-chat-quote-fill"></i> "Children are my passion. I love helping them regain mobility and smile again. Every child deserves a chance to run and play."
-              </div>
-              <span class="toggle-details" data-target="bioEmmanuel">📋 more about Dr. Emmanuel</span>
-              <div class="extra-bio" id="bioEmmanuel">
-                <p>Dr. Emmanuel sub-specializes in treating clubfoot, hip dysplasia, and limb deformities. He leads the school screening program and works closely with physiotherapists.</p>
+                <i class="bi bi-chat-quote-fill"></i> "Every patient deserves comprehensive care and respectful attention. I partner with my patients to manage acute illnesses and chronic conditions effectively."
               </div>
             </div>
           </div>
         </div>
 
-        <!-- 4. Dr. Grace Achieng (Anaesthesiologist) -->
+        <!-- 5. Dr. Grace B (Dermatologist) -->
         <div class="col-md-6 col-lg-4">
           <div class="doctor-card">
             <div class="d-flex flex-column align-items-center">
-              <img src="/img/lilian-accountant.jpg" class="doctor-img" alt="Dr. Grace Achieng">
-              <h3 class="h4">Dr. Grace Achieng</h3>
-              <span class="doctor-specialty">MBChB, MMed (Anaes) • Consultant Anaesthesiologist</span>
+              <div class="doctor-img d-flex align-items-center justify-content-center" style="background: var(--sosscl-light-teal); font-size: 3rem; font-weight: 700; color: var(--sosscl-teal);">GB</div>
+              <h3 class="h4">Dr. Grace B</h3>
+              <span class="doctor-specialty">Dermatologist</span>
               <div class="doctor-word">
-                <i class="bi bi-chat-quote-fill"></i> "I ensure you are safe and comfortable during surgery. Anaesthesia is about trust and vigilance."
-              </div>
-              <span class="toggle-details" data-target="bioGrace">📋 more about Dr. Grace</span>
-              <div class="extra-bio" id="bioGrace">
-                <p>Dr. Grace heads the anaesthesia department. She has advanced training in regional anaesthesia and paediatric anaesthesia, and is a certified instructor in resuscitation.</p>
+                <i class="bi bi-chat-quote-fill"></i> "Skin health reflects overall wellness. I'm committed to diagnosing and treating dermatological conditions with precision and care for improved quality of life."
               </div>
             </div>
           </div>
         </div>
 
-        <!-- 5. Dr. Peter Edoku (Radiologist) -->
+        <!-- 6. Dr. Raymond Malinga (Senior Orthopaedic Surgeon, Consultant & Co-founder) -->
         <div class="col-md-6 col-lg-4">
           <div class="doctor-card">
             <div class="d-flex flex-column align-items-center">
-              <img src="/img/esther-cashier.jpg" class="doctor-img" alt="Dr. Peter Edoku">
-              <h3 class="h4">Dr. Peter Edoku</h3>
-              <span class="doctor-specialty">MBChB, MMed (Rad) • Radiologist</span>
+              <div class="doctor-img d-flex align-items-center justify-content-center" style="background: var(--sosscl-light-teal); font-size: 3rem; font-weight: 700; color: var(--sosscl-teal);">RM</div>
+              <span class="leadership-badge mb-2">Co-founder & Consultant</span>
+              <h3 class="h4">Dr. Raymond Malinga</h3>
+              <span class="doctor-specialty">Senior Orthopaedic Surgeon</span>
               <div class="doctor-word">
-                <i class="bi bi-chat-quote-fill"></i> "Accurate imaging is the foundation of correct diagnosis. I'm here to ensure every image tells the full story."
-              </div>
-              <span class="toggle-details" data-target="bioPeter">📋 more about Dr. Peter</span>
-              <div class="extra-bio" id="bioPeter">
-                <p>Dr. Peter oversees X‑ray, ultrasound, and basic CT interpretation. He works closely with surgeons to plan operations and reduce risks.</p>
+                <i class="bi bi-chat-quote-fill"></i> "Building SOSSCL from the ground up was a dream rooted in service. Excellence in orthopaedic care remains our north star."
               </div>
             </div>
           </div>
         </div>
 
-        <!-- 6. Dr. Betty Nambozo (Physiatrist / Rehabilitation) -->
-        <div class="col-md-6 col-lg-4">
-          <div class="doctor-card">
-            <div class="d-flex flex-column align-items-center">
-              <img src="/img/rhoda-manager.jpg" class="doctor-img" alt="Dr. Betty Nambozo">
-              <h3 class="h4">Dr. Betty Nambozo</h3>
-              <span class="doctor-specialty">MBChB, MSc Rehab • Rehabilitation Medicine</span>
-              <div class="doctor-word">
-                <i class="bi bi-chat-quote-fill"></i> "Recovery doesn't end in the operating room. I help patients regain strength and independence through tailored rehab."
-              </div>
-              <span class="toggle-details" data-target="bioBetty">📋 more about Dr. Betty</span>
-              <div class="extra-bio" id="bioBetty">
-                <p>Dr. Betty leads the physiotherapy and rehabilitation unit. She has special interest in stroke rehab and spinal cord injury management.</p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div> <!-- end first row -->
-
-      <!-- second row: more doctors (associates) -->
-      <div class="row g-4 mt-3">
-        <div class="col-lg-3 col-md-6">
-          <div class="doctor-card text-center p-3">
-            <img src="/img/air-conditioner.jpg" class="doctor-img" style="width:100px; height:100px;" alt="Dr. Charles O.">
-            <h5>Dr. Tom Oria</h5>
-            <span class="doctor-specialty">Physician</span>
-            <div class="doctor-word small">"I care for your overall health — from diabetes to hypertension."</div>
-            <span class="toggle-details" data-target="bioCharles">➕ bio</span>
-            <div class="extra-bio" id="bioCharles">Dr. Charles manages medical conditions and pre‑operative assessments.</div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <div class="doctor-card text-center p-3">
-            <img src="/img/microscope.jpg" class="doctor-img" style="width:100px; height:100px;" alt="Dr. Rose M.">
-            <h5>Dr. Susan Atai</h5>
-            <span class="doctor-specialty">Pathologist (Microbiology)</span>
-            <div class="doctor-word small">"Accurate lab results guide your treatment."</div>
-            <span class="toggle-details" data-target="bioRose">➕ bio</span>
-            <div class="extra-bio" id="bioRose">Dr. Rose oversees the lab and infection control.</div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <div class="doctor-card text-center p-3">
-            <img src="/img/centrifuge.jpg" class="doctor-img" style="width:100px; height:100px;" alt="Sr. Jane">
-            <h5>Sr. Jane Akello</h5>
-            <span class="doctor-specialty">Nursing Officer In‑charge</span>
-            <div class="doctor-word small">"Our nurses are here for you, day and night."</div>
-            <span class="toggle-details" data-target="bioJane">➕ note</span>
-            <div class="extra-bio" id="bioJane">Sr. Jane leads a team of 40+ nurses, ensuring compassionate care.</div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <div class="doctor-card text-center p-3">
-            <img src="/img/cbc-machine.jpg" class="doctor-img" style="width:100px; height:100px;" alt="Tom">
-            <h5>Tom Ocen</h5>
-            <span class="doctor-specialty">Senior Physiotherapist</span>
-            <div class="doctor-word small">"Movement is medicine — let's get you moving."</div>
-            <span class="toggle-details" data-target="bioTom">➕ bio</span>
-            <div class="extra-bio" id="bioTom">Tom specialises in post‑orthopaedic rehab and sports injuries.</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- full team toggle (all remaining associates) -->
-      <div class="text-center mt-5">
-        <span class="toggle-details" id="moreTeamToggle"><i class="bi bi-people-fill me-2"></i>View all associate clinicians (15+)</span>
-      </div>
-      <div class="extra-content row g-3 mt-3" id="moreTeam" style="display: none;">
-        <div class="col-md-3">Dr. Michael E. – Orthopaedic officer</div>
-        <div class="col-md-3">Dr. Faith A. – Medical officer</div>
-        <div class="col-md-3">Dr. Simon P. – Anaesthetic officer</div>
-        <div class="col-md-3">Sr. Grace – NICU nurse</div>
-        <div class="col-md-3">Mr. David – plaster technician</div>
-        <div class="col-md-3">Ms. Sarah – dietitian</div>
-        <div class="col-md-3">Mr. Isaac – clinical psychologist</div>
-        <div class="col-md-3">Dr. Patricia – radiology officer</div>
-        <div class="col-12"><p class="text-secondary mt-2">… plus many dedicated nurses, interns, and support staff.</p></div>
-      </div>
     </div>
   </section>
 
   <!-- message from the team (group) -->
-  <section class="py-5 bg-white">
+  <section class="py-5 bg-white" style="background-image: linear-gradient(135deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.96) 100%), url('/img/waiting\ area.jpg'); background-size: cover; background-position: center;">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-8 text-center">
           <i class="bi bi-megaphone display-3" style="color: var(--sosscl-teal);"></i>
-          <h2 class="fw-semibold mt-3">A word from our clinical team</h2>
-          <p class="fs-5 fst-italic">"We don't just treat conditions — we care for people. Every member of our team, from surgeons to cleaners, works together to ensure you feel safe, respected, and healed. Your health is our mission."</p>
-          <p>— Dr. Michael Emusugut & the SOSSCL team</p>
+          <h2 class="fw-semibold mt-3">A word from our team</h2>
+          <p class="fs-5 fst-italic">"We are committed to treating every patient with compassion and excellence. Our multidisciplinary team works collaboratively to provide the best possible outcomes. Your wellbeing and trust are at the heart of everything we do."</p>
+          <p>— The SOSSCL clinical and support team</p>
         </div>
       </div>
     </div>
@@ -597,19 +519,7 @@
         <div class="col-md-6 text-md-end small">Designed & maintained by <a href="https://webdev.dexstudios.site">dex-studios-ug</a><i class="bi bi-wordpress"></i> & <i class="bi bi-bootstrap"></i></div>
       </div>
     </div>
-  <!-- optional map / location row (jQuery toggle) -->
-      <div class="row mt-5">
-        <div class="col-12">
-          <div class="bg-white p-3 rounded-4 d-flex flex-wrap align-items-center justify-content-between">
-            <span><i class="bi bi-geo-alt-fill me-2" style="color: var(--primary-teal);"></i> Plot 23, Orwadai, Soroti East (Opposite Impact Institute)</span>
-            <span class="toggle-details" id="showFullMapLink">📌 view location details</span>
-          </div>
-          <div class="extra-content mt-2 p-3 bg-light rounded" id="fullMapDemo">
-            <iframe title="demo map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.29781217243!2d33.622!3d1.715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMcKwNDInNTQuMCJOIDMzwrAzNycyMS4wIkU!5e0!3m2!1sen!2sug!4v1620000000000" width="100%" height="200" style="border:0; border-radius:16px;" allowfullscreen="" loading="lazy"></iframe>
-            <p class="small mt-2">Ambulance entrance: open 24/7 · free parking</p>
-          </div>
-        </div>
-      </div></footer>
+</footer>
 
 
   <!-- jQuery & toggles -->
